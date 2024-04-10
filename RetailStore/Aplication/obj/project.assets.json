@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj",
-      "projectName": "Aplication",
-      "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj",
+      "projectUniqueName": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj",
+      "projectName": "Application",
+      "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj",
       "packagesPath": "C:\\Users\\LeonelEstrella\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\obj\\",
       "projectStyle": "PackageReference",

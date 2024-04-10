@@ -1,7 +1,6 @@
-﻿using Aplication.Interface.Categories;
-using Domain.Entities;
+﻿using Application.Interface.Categories;
 
-namespace Aplication.UseCase.Categories
+namespace Application.UseCase.Categories
 {
     public class CategoryService : ICategoryService
     {

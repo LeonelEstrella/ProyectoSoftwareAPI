@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Aplication.Interface
+namespace Application.Interface
 {
     public interface IProductQuery
     {

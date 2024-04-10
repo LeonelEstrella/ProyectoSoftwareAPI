@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailStore", "RetailStore\RetailStore.csproj", "{5CEDDDF9-97A0-411F-925E-3595AC8A8B91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplication", "Aplication\Aplication.csproj", "{864CC629-9DE7-4CE0-AC8E-7A46331D236D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Aplication\Application.csproj", "{864CC629-9DE7-4CE0-AC8E-7A46331D236D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure", "Infraestructure\Infraestructure.csproj", "{2BA3724B-6566-4752-A2F8-5B01BAA209C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{80E38608-4DC4-40EC-B87D-D168BAE2D759}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{80E38608-4DC4-40EC-B87D-D168BAE2D759}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

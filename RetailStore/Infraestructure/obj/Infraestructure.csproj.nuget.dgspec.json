@@ -4,12 +4,12 @@
     "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Infraestructure\\Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj": {
+    "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj",
-        "projectName": "Aplication",
-        "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj",
         "packagesPath": "C:\\Users\\LeonelEstrella\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
@@ -152,8 +152,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj": {
-                "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj"
+              "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj": {
+                "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj"
               }
             }
           }

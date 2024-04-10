@@ -9,3 +9,4 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwa
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.sourcelink.json

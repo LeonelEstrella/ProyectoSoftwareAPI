@@ -1,5 +1,5 @@
-﻿using Aplication.Interface;
-using Aplication.Models;
+﻿using Application.Interface;
+using Application.Models;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 

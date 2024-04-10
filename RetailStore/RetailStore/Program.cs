@@ -1,7 +1,7 @@
-using Aplication.Interface;
-using Aplication.Interface.Categories;
-using Aplication.UseCase.Categories;
-using Aplication.UseCase.Products;
+using Application.Interface;
+using Application.Interface.Categories;
+using Application.UseCase.Categories;
+using Application.UseCase.Products;
 using Infraestructure.Command;
 using Infraestructure.Persistence;
 using Infraestructure.Queries;

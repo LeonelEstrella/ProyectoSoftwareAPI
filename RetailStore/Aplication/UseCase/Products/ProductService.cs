@@ -1,11 +1,10 @@
-﻿using Aplication.Interface;
-using Aplication.Interface.Categories;
-using Aplication.Models;
-using Aplication.Response;
-using Aplication.UseCase.Categories;
+﻿using Application.Interface;
+using Application.Interface.Categories;
+using Application.Models;
+using Application.Response;
 using Domain.Entities;
 
-namespace Aplication.UseCase.Products
+namespace Application.UseCase.Products
 {
     public class ProductService : IProductService
     {

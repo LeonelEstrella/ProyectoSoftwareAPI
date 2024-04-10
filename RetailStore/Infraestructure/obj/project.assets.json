@@ -1503,17 +1503,17 @@
           }
         }
       },
-      "Aplication/1.0.0": {
+      "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Domain": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Aplication.dll": {}
+          "bin/placeholder/Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Aplication.dll": {}
+          "bin/placeholder/Application.dll": {}
         }
       },
       "Domain/1.0.0": {
@@ -4120,10 +4120,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Aplication/1.0.0": {
+    "Application/1.0.0": {
       "type": "project",
-      "path": "../Aplication/Aplication.csproj",
-      "msbuildProject": "../Aplication/Aplication.csproj"
+      "path": "../Aplication/Application.csproj",
+      "msbuildProject": "../Aplication/Application.csproj"
     },
     "Domain/1.0.0": {
       "type": "project",
@@ -4133,7 +4133,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Aplication >= 1.0.0",
+      "Application >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4"
@@ -4166,8 +4166,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj": {
-              "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Aplication.csproj"
+            "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj": {
+              "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp2 - Leonel Estrella\\ProyectoSoftwareAPI\\RetailStore\\Aplication\\Application.csproj"
             }
           }
         }

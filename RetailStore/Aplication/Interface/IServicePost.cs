@@ -1,4 +1,4 @@
-﻿namespace Aplication.Interface
+﻿namespace Application.Interface
 {
     public interface IServicePost
     {

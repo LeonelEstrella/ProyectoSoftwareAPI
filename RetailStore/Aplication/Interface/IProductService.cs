@@ -1,8 +1,8 @@
-﻿using Aplication.Models;
-using Aplication.Response;
+﻿using Application.Models;
+using Application.Response;
 using Domain.Entities;
 
-namespace Aplication.Interface
+namespace Application.Interface
 {
     public interface IProductService
     {

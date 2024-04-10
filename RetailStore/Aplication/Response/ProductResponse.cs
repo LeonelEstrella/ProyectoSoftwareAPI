@@ -1,4 +1,4 @@
-﻿namespace Aplication.Response
+﻿namespace Application.Response
 {
     public class ProductResponse
     {

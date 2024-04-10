@@ -30,10 +30,8 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwa
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\obj\Debug\net8.0\RetailStore.pdb
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\obj\Debug\net8.0\RetailStore.genruntimeconfig.cache
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\obj\Debug\net8.0\ref\RetailStore.dll
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Aplication.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Infraestructure.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Infraestructure.pdb
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Aplication.pdb
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -140,3 +138,6 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwa
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\obj\Debug\net8.0\RetailStore.sourcelink.json
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Application.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\RetailStore\bin\Debug\net8.0\Application.pdb

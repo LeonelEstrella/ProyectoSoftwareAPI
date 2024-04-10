@@ -1,4 +1,4 @@
-﻿namespace Aplication.Models
+﻿namespace Application.Models
 {
     public class CreateProductRequest
     {
