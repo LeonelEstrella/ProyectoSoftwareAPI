@@ -1,0 +1,15 @@
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\bin\Debug\net8.0\Aplication.deps.json
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\bin\Debug\net8.0\Aplication.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\bin\Debug\net8.0\Aplication.pdb
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.csproj.AssemblyReference.cache
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.AssemblyInfoInputs.cache
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.AssemblyInfo.cs
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.csproj.CoreCompileInputs.cache
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.csproj.Up2Date
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\refint\Aplication.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\Aplication.pdb
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\obj\Debug\net8.0\ref\Aplication.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\bin\Debug\net8.0\Domain.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Aplication\bin\Debug\net8.0\Domain.pdb

@@ -1,0 +1,11 @@
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp2 - Leonel Estrella\ProyectoSoftwareAPI\RetailStore\Domain\obj\Debug\net8.0\ref\Domain.dll
