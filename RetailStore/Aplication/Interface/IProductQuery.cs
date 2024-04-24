@@ -4,7 +4,8 @@ namespace Application.Interface
 {
     public interface IProductQuery
     {
-        List<Product> GetProductList();
+        List<Product> GetAllProducts(List<int> categories, string name, int skip, int limit);
         Product GetProductById(Guid productId);
+        Product GetProductByName(string name);
     }
 }

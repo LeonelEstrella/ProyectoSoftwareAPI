@@ -1,7 +1,13 @@
 using Application.Interface;
 using Application.Interface.Categories;
+using Application.Interface.SaleInterface;
+using Application.Interface.SaleMaths;
+using Application.Response;
 using Application.UseCase.Categories;
 using Application.UseCase.Products;
+using Application.UseCase.Sale;
+using Application.Util;
+using Domain.Entities;
 using Infraestructure.Command;
 using Infraestructure.Persistence;
 using Infraestructure.Queries;
@@ -26,6 +32,14 @@ builder.Services.AddScoped<IProductQuery, ProductQuery>();
 builder.Services.AddScoped<IProductCommand, ProductCommand>();
 
 builder.Services.AddScoped<ICategoryQuery, CategoryQuery>();
+
+builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddScoped<ISaleQuery, SaleQuery>();
+builder.Services.AddScoped<ISaleCommand, SaleCommand>();
+
+builder.Services.AddScoped<IList<ProductResponse>, List<ProductResponse>>();
+builder.Services.AddScoped<ISaleMathematics, SaleMathematics>();
+builder.Services.AddScoped<Sale>();
 
 var app = builder.Build();
 

@@ -2,12 +2,19 @@
 {
     public class ProductResponse
     {
-        public Guid ProductId { get; set; }
-        public required string Name { get; set; }
-        public string? Description { get; set; }
-        public decimal Price { get; set; }
-        public int Discount { get; set; }
-        public string CategoryName { get; set; }
-        public string ImageLink { get; set; }
+        public Guid id { get; set; }
+        public required string name { get; set; }
+        public string? description { get; set; }
+        public decimal price { get; set; }
+        public int discount { get; set; }
+        public string imageUrl { get; set; }
+        public int? quantity { get; set; }
+        public ProductCategoryResponse category { get; set; }       
+    }
+
+    public class ProductCategoryResponse 
+    {
+        public int id { get; set; }
+        public required string name { get; set; }
     }
 }

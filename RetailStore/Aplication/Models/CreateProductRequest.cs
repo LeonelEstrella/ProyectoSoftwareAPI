@@ -2,11 +2,11 @@
 {
     public class CreateProductRequest
     {
-        public string ProductName { get; set; }
-        public string? ProductDescription { get; set; }
-        public decimal ProductPrice { get; set; }
-        public int ProductDiscount { get; set; }
-        public int CategoryCategoryId { get; set; }
-        public string ProductImageLink { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public decimal price { get; set; }
+        public int discount { get; set; }
+        public string imageUrl { get; set; }
+        public int category { get; set; }
     }
 }

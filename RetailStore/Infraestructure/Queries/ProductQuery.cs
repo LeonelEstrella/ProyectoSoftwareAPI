@@ -1,7 +1,7 @@
 ﻿using Application.Interface;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infraestructure.Queries
 {
@@ -12,14 +12,42 @@ namespace Infraestructure.Queries
         {
             _context = context;
         }
+
         public Product GetProductById(Guid productId)
         {
             return _context.Product.FirstOrDefault(p => p.ProductId == productId);
         }
 
-        public List<Product> GetProductList()
+        public Product GetProductByName(string name)
         {
-            throw new NotImplementedException();
+            return _context.Product.FirstOrDefault(p => p.Name == name);
+        }
+
+        public List<Product> GetAllProducts(List<int> categories, string name, int skip, int limit)
+        {
+            IQueryable<Product> query = _context.Product;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(p => p.Name.Contains(name));
+            }
+
+            if (categories != null && categories.Any())
+            {
+                query = query.Where(p => categories.Contains(p.CategoryId));
+            }
+
+            if (skip > 0)
+            {
+                query = query.Skip(skip);
+            }
+
+            if (limit > 0)
+            {
+                query = query.Take(limit);
+            }
+
+            return query.ToList();
         }
     }
 }

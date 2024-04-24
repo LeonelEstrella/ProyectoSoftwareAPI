@@ -1,7 +1,9 @@
-﻿namespace Application.Interface.Categories
+﻿using Domain.Entities;
+
+namespace Application.Interface.Categories
 {
     public interface ICategoryService
     {
-        string GetCategoryById(int categoryId);
+        Category GetCategoryById(int categoryId);
     }
 }

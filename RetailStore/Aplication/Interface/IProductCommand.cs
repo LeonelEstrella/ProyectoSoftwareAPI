@@ -5,6 +5,7 @@ namespace Application.Interface
     public interface IProductCommand
     {
         Task InsertProduct(Product product);
-        Task RemoveProduct(int productId);
+        Task RemoveProduct(Product product);
+        Task PatchProduct(Product product);
     }
 }

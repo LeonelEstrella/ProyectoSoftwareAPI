@@ -1,4 +1,5 @@
 ﻿using Application.Interface.Categories;
+using Domain.Entities;
 
 namespace Application.UseCase.Categories
 {
@@ -11,10 +12,10 @@ namespace Application.UseCase.Categories
             _query = query;
         }
 
-        public string GetCategoryById(int categoryId)
+        public Category GetCategoryById(int categoryId)
         {
            var category = _query.GetById(categoryId);
-           return  category.Name;
+           return  category;
         }
     }
 }

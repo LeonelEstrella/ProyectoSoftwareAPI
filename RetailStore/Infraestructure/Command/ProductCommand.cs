@@ -19,9 +19,16 @@ namespace Infraestructure.Command
             await _context.SaveChangesAsync();
         }
 
-        public Task RemoveProduct(int productId)
+        public async Task PatchProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Entry(product).CurrentValues.SetValues(product);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveProduct(Product product)
+        {
+            _context.Product.Remove(product);
+            await _context.SaveChangesAsync();
         }
     }
 }
