@@ -21,9 +21,21 @@ namespace Infraestructure.Queries
 
         public List<Sale> GetSales(string from, string to)
         {
-            DateTime fromDate = DateTime.Parse(from);
-            DateTime toDate = DateTime.Parse(to);
-            return _context.Sale.ToList(/*s => s.DateTime >= fromDate && s.DateTime <= toDate*/);
+            IQueryable<Sale> query = _context.Sale;
+
+            if (!string.IsNullOrEmpty(from))
+            {
+                DateTime fromDate = DateTime.Parse(from);
+                query = query.Where(s => s.DateTime >= fromDate);
+            }
+
+            if (!string.IsNullOrEmpty(to))
+            {
+                DateTime toDate = DateTime.Parse(to);
+                query = query.Where(s => s.DateTime <= toDate);
+            }
+            
+            return query.ToList();
         }
     }
 }

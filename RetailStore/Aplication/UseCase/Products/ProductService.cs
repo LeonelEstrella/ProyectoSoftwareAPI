@@ -1,5 +1,6 @@
 ﻿using Application.Interface;
 using Application.Interface.Categories;
+using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
@@ -12,12 +13,14 @@ namespace Application.UseCase.Products
         private readonly IProductCommand _command;
         private readonly IProductQuery _query;
         private readonly ICategoryService _categoryService;
+        private readonly ISaleProductService _saleProductService;
 
-        public ProductService(IProductCommand command, IProductQuery query, ICategoryService categoryService)
+        public ProductService(IProductCommand command, IProductQuery query, ICategoryService categoryService, ISaleProductService saleProductService)
         {
             _command = command;
             _query = query;
             _categoryService = categoryService;
+            _saleProductService = saleProductService;
         }
 
         public async Task<ProductResponse> CreateProduct(CreateProductRequest request)
@@ -75,6 +78,11 @@ namespace Application.UseCase.Products
             if (product == null)
             {
                 throw new NotFoundException($"No se ha encontrado el producto.");
+            }
+
+            if (_saleProductService.WasProductSale(productId)) 
+            {
+                throw new ConflictException($"No se puede borrar este producto porque se encuentra asociado a una venta.");
             }
 
             await _command.RemoveProduct(product);

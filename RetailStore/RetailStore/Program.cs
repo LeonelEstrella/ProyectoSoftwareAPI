@@ -2,10 +2,12 @@ using Application.Interface;
 using Application.Interface.Categories;
 using Application.Interface.SaleInterface;
 using Application.Interface.SaleMaths;
+using Application.Interface.SaleProductInterfaces;
 using Application.Response;
 using Application.UseCase.Categories;
 using Application.UseCase.Products;
 using Application.UseCase.Sale;
+using Application.UseCase.SaleProducts;
 using Application.Util;
 using Domain.Entities;
 using Infraestructure.Command;
@@ -37,7 +39,11 @@ builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<ISaleQuery, SaleQuery>();
 builder.Services.AddScoped<ISaleCommand, SaleCommand>();
 
+builder.Services.AddScoped<ISaleProductService, SaleProductService>();
+builder.Services.AddScoped<ISaleProductQuery, SaleProductQuery>();
+
 builder.Services.AddScoped<IList<ProductResponse>, List<ProductResponse>>();
+builder.Services.AddScoped<IList<SingleSaleProduct>, List<SingleSaleProduct>>();
 builder.Services.AddScoped<ISaleMathematics, SaleMathematics>();
 builder.Services.AddScoped<Sale>();
 

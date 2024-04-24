@@ -1,10 +1,10 @@
 ﻿using Application.Interface;
 using Application.Interface.SaleInterface;
 using Application.Interface.SaleMaths;
+using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
-using Domain.Entities;
 
 namespace Application.UseCase.Sale
 {
@@ -15,10 +15,12 @@ namespace Application.UseCase.Sale
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
         private readonly IList<ProductResponse> _productList;
+        private readonly IList<SingleSaleProduct> _singleSaleProduct;
         private  Domain.Entities.Sale _sale;
         private readonly ISaleMathematics _saleMathematics;
+        private readonly ISaleProductService _saleProductService;
 
-        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<ProductResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics)
+        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<ProductResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
         {
             _command = command;
             _query = query;
@@ -26,12 +28,14 @@ namespace Application.UseCase.Sale
             _productList = productList;
             _sale = sale;
             _saleMathematics = saleMathematics;
+            _singleSaleProduct = singleSaleProduct;
+            _saleProductService = saleProductService;
         }
 
         public async Task<SingleSaleResponse> CreateSale(CreateSaleRequest request)
         {
             var totalProductsBougth = 0;
-            var productListResponse = new List<SingleSaleProduct>();
+            
             ProductResponse product;
 
             foreach (var item in request.products) 
@@ -70,7 +74,7 @@ namespace Application.UseCase.Sale
                     }
                 });
 
-                productListResponse.Add(new SingleSaleProduct
+                _singleSaleProduct.Add(new SingleSaleProduct
                 {
                     productId = product.id,
                     quantity = item.quantity,
@@ -92,35 +96,69 @@ namespace Application.UseCase.Sale
                 totalDiscount = _sale.TotalDiscount,
                 taxes = TAXES,
                 date = DateTime.Now,
-                products = productListResponse
+                products = _singleSaleProduct.ToList()
             });
         }
 
         public async Task<SingleSaleResponse> GetSaleById(int saleId)
         {
+            var totalProductsBougth = 0;
             var currentSale = _query.GetSaleById(saleId);          
 
             if (currentSale == null)
             {
                 throw new NotFoundException($"No se ha encontrado la venta.");
             }
+            
+            var productIdList = _saleProductService.GetSaleProductBySaleId(saleId);
+
+
+            foreach (var item in productIdList )
+            {
+                var product = (_serviceProduct.GetProductById(item.ProductId)).Result;
+                totalProductsBougth += item.Quantity;
+                _singleSaleProduct.Add(new SingleSaleProduct
+                {
+                    productId = product.id,
+                    quantity = item.Quantity,
+                    price = product.price,
+                    discount = product.discount
+                });
+            }
 
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = currentSale.SaleId,
                 totalPay = currentSale.TotalPay,
-                totalQuantity = 0,
+                totalQuantity = totalProductsBougth,
                 subtotal = currentSale.Subtotal,
+                totalDiscount = currentSale.TotalDiscount,
                 taxes = currentSale.Taxes,
                 date = currentSale.DateTime,
-                //products = currentSale.SaleProductList
+                products = _singleSaleProduct.ToList()
 
             });
         }
 
-        public Task<List<SingleSaleResponse>> GetSalesList(string from, string to)
+        public List<SalesListResponse> GetSalesList(string from, string to)
         {
-            throw new NotImplementedException();
+            var salesList = _query.GetSales(from, to);
+
+            List<SalesListResponse> salesListResponse = new List<SalesListResponse>();
+
+            foreach (var item in salesList)
+            {
+                salesListResponse.Add(new SalesListResponse
+                {
+                    id = item.SaleId,
+                    totalPay = item.TotalPay,
+                    totalQuantity = 0,
+                    date = item.DateTime,
+                });
+            }
+
+            return salesListResponse;
+
         }
     }
 }

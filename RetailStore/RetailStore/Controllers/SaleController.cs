@@ -50,7 +50,7 @@ namespace RetailStore.Controllers
         {
             try
             {
-                var result = await _saleService.GetSalesList(from, to);
+                var result = _saleService.GetSalesList(from, to);
                 return new JsonResult(result);
             }
             catch (NotFoundException ex)
