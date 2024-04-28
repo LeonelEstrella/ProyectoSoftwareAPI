@@ -4,7 +4,7 @@ namespace Application.Interface.SaleProductInterfaces
 {
     public interface ISaleProductService
     {
-        List<SaleProduct> GetSaleProductBySaleId(int saleId);
+        Task<List<SaleProduct>> GetSaleProductBySaleId(int saleId);
         Boolean WasProductSale(Guid productId);
     }
 }

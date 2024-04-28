@@ -4,7 +4,7 @@ namespace Application.Interface.SaleInterface
 {
     public interface ISaleQuery
     {
-        List<Sale> GetSales(string from, string to);
+        List<Sale> GetSales(DateTime? fromDate, DateTime? toDate);
         Sale GetSaleById(int saleId);
     }
 }

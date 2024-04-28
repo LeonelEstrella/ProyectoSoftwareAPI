@@ -23,7 +23,7 @@ namespace Application.UseCase.Products
             _saleProductService = saleProductService;
         }
 
-        public async Task<ProductResponse> CreateProduct(CreateProductRequest request)
+        public async Task<ProductGetResponse> CreateProduct(ProductRequest request)
         {
 
             var existingProduct = _query.GetProductByName(request.name);
@@ -39,7 +39,7 @@ namespace Application.UseCase.Products
                     ProductId = new Guid(),
                     Name = request.name,
                     Description = request.description,
-                    Price = request.price,
+                    Price = Convert.ToDecimal(request.price),
                     Discount = request.discount,
                     CategoryId = request.category,
                     ImageLink = request.imageUrl
@@ -49,7 +49,7 @@ namespace Application.UseCase.Products
 
                 var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
 
-                return new ProductResponse
+                return new ProductGetResponse
                 {
                     id = product.ProductId,
                     name = product.Name,
@@ -71,7 +71,7 @@ namespace Application.UseCase.Products
             }
         }
 
-        public async Task<ProductResponse> DeleteProductById(Guid productId)
+        public async Task<ProductGetResponse> DeleteProductById(Guid productId)
         {
             var product = _query.GetProductById(productId);
 
@@ -89,7 +89,7 @@ namespace Application.UseCase.Products
 
             var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
 
-            return await Task.FromResult(new ProductResponse
+            return await Task.FromResult(new ProductGetResponse
             {
                 id = product.ProductId,
                 name = product.Name,
@@ -105,7 +105,7 @@ namespace Application.UseCase.Products
             });
         }
 
-        public async Task<ProductResponse> GetProductById(Guid productId)
+        public async Task<ProductGetResponse> GetProductById(Guid productId)
         {
             var product = _query.GetProductById(productId);
 
@@ -116,7 +116,7 @@ namespace Application.UseCase.Products
 
             var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
 
-            return await Task.FromResult(new ProductResponse
+            return await Task.FromResult(new ProductGetResponse
             {
                 id = product.ProductId,
                 name = product.Name,
@@ -156,7 +156,7 @@ namespace Application.UseCase.Products
             return productListResponse;
         }
 
-        public async Task<ProductResponse> UpdateProduct(Guid productId, CreateProductRequest request)
+        public async Task<ProductGetResponse> UpdateProduct(Guid productId, ProductRequest request)
         {
             var currentProduct = _query.GetProductById(productId);
 
@@ -174,7 +174,7 @@ namespace Application.UseCase.Products
             {
                 currentProduct.Name = request.name;
                 currentProduct.Description = request.description;
-                currentProduct.Price = request.price;
+                currentProduct.Price = Convert.ToDecimal(request.price);
                 currentProduct.Discount = request.discount;
                 currentProduct.CategoryId = request.category;
                 currentProduct.ImageLink = request.imageUrl;
@@ -183,7 +183,7 @@ namespace Application.UseCase.Products
 
                 var categoryObject = _categoryService.GetCategoryById(currentProduct.CategoryId);
 
-                return new ProductResponse
+                return new ProductGetResponse
                 {
                     id = productId,
                     name = currentProduct.Name,

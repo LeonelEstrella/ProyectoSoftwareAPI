@@ -6,10 +6,10 @@ namespace Application.Interface
 {
     public interface IProductService
     {
-        Task<ProductResponse> CreateProduct(CreateProductRequest request);
-        Task<ProductResponse> UpdateProduct(Guid productId, CreateProductRequest request);
+        Task<ProductGetResponse> CreateProduct(ProductRequest request);
+        Task<ProductGetResponse> UpdateProduct(Guid productId, ProductRequest request);
         List<ProductListResponse> GetProductList(List<int> categories, string name, int skip, int limit);
-        Task<ProductResponse> GetProductById(Guid productId);
-        Task<ProductResponse> DeleteProductById(Guid productId); 
+        Task<ProductGetResponse> GetProductById(Guid productId);
+        Task<ProductGetResponse> DeleteProductById(Guid productId); 
     }
 }

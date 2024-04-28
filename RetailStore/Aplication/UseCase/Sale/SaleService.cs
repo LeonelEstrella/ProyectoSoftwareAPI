@@ -5,22 +5,24 @@ using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
 
 namespace Application.UseCase.Sale
 {
     public class SaleService : ISaleService
     {
-        const decimal TAXES = 1.21m;
+        const double TAXES = 1.21;
         private readonly ISaleCommand _command;
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
-        private readonly IList<ProductResponse> _productList;
+        private readonly IList<ProductGetResponse> _productList;
         private readonly IList<SingleSaleProduct> _singleSaleProduct;
         private  Domain.Entities.Sale _sale;
         private readonly ISaleMathematics _saleMathematics;
         private readonly ISaleProductService _saleProductService;
 
-        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<ProductResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
+        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<ProductGetResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
         {
             _command = command;
             _query = query;
@@ -34,9 +36,10 @@ namespace Application.UseCase.Sale
 
         public async Task<SingleSaleResponse> CreateSale(CreateSaleRequest request)
         {
+
             var totalProductsBougth = 0;
             
-            ProductResponse product;
+            ProductGetResponse product;
 
             foreach (var item in request.products) 
             {
@@ -58,7 +61,7 @@ namespace Application.UseCase.Sale
                 }
                              
 
-                _productList.Add(new ProductResponse 
+                _productList.Add(new ProductGetResponse 
                 {
                     id = product.id,
                     name = product.name,
@@ -78,21 +81,26 @@ namespace Application.UseCase.Sale
                 {
                     productId = product.id,
                     quantity = item.quantity,
-                    price = product.price,
+                    price = Convert.ToDouble(product.price),
                     discount = product.discount
                 });
             }
 
             _sale = _saleMathematics.CalculateSale(_productList, _sale);
 
-            var saleId = _command.RegisterSale(_productList, _sale);
+            if(request.totalPayed != Convert.ToDouble(_sale.TotalPay))
+            {
+                throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
+            }
+
+            var saleId = await _command.RegisterSale(_productList, _sale);
 
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = saleId,
-                totalPay = _sale.TotalPay,
+                totalPay = Convert.ToDouble(_sale.TotalPay),
                 totalQuantity = totalProductsBougth,
-                subtotal = _sale.Subtotal,
+                subtotal = Convert.ToDouble(_sale.Subtotal),
                 totalDiscount = _sale.TotalDiscount,
                 taxes = TAXES,
                 date = DateTime.Now,
@@ -110,7 +118,7 @@ namespace Application.UseCase.Sale
                 throw new NotFoundException($"No se ha encontrado la venta.");
             }
             
-            var productIdList = _saleProductService.GetSaleProductBySaleId(saleId);
+            var productIdList = await _saleProductService.GetSaleProductBySaleId(saleId);
 
 
             foreach (var item in productIdList )
@@ -121,7 +129,7 @@ namespace Application.UseCase.Sale
                 {
                     productId = product.id,
                     quantity = item.Quantity,
-                    price = product.price,
+                    price = Convert.ToDouble(product.price),
                     discount = product.discount
                 });
             }
@@ -129,11 +137,11 @@ namespace Application.UseCase.Sale
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = currentSale.SaleId,
-                totalPay = currentSale.TotalPay,
+                totalPay = Convert.ToDouble(currentSale.TotalPay),
                 totalQuantity = totalProductsBougth,
-                subtotal = currentSale.Subtotal,
+                subtotal = Convert.ToDouble(currentSale.Subtotal),
                 totalDiscount = currentSale.TotalDiscount,
-                taxes = currentSale.Taxes,
+                taxes = Convert.ToDouble(currentSale.Taxes),
                 date = currentSale.DateTime,
                 products = _singleSaleProduct.ToList()
 
@@ -142,7 +150,28 @@ namespace Application.UseCase.Sale
 
         public List<SalesListResponse> GetSalesList(string from, string to)
         {
-            var salesList = _query.GetSales(from, to);
+            DateTime? fromDate = null;
+            DateTime? toDate = null;
+
+            if (!string.IsNullOrEmpty(from))
+            {
+                if (!DateTime.TryParseExact(from, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedFrom))
+                {
+                    throw new BadRequestException("La fecha de inicio no tiene el formato correcto (yyyy-MM-ddTHH:mm:ss).");
+                }
+                fromDate = parsedFrom;
+            }
+
+            if (!string.IsNullOrEmpty(to))
+            {
+                if (!DateTime.TryParseExact(to, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedTo))
+                {
+                    throw new BadRequestException("La fecha de fin no tiene el formato correcto (yyyy-MM-ddTHH:mm:ss).");
+                }
+                toDate = parsedTo;
+            }
+
+            var salesList = _query.GetSales(fromDate, toDate);
 
             List<SalesListResponse> salesListResponse = new List<SalesListResponse>();
 

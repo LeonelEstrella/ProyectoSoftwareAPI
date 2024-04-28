@@ -16,7 +16,7 @@ namespace Infraestructure.Command
             _context = context;
         }
 
-        public int RegisterSale(IList<ProductResponse> productList, Sale sale)
+        public async Task<int> RegisterSale(IList<ProductGetResponse> productList, Sale sale)
         {
             var newSale = new Sale
             {

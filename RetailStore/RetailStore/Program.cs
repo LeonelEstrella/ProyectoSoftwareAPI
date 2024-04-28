@@ -42,7 +42,7 @@ builder.Services.AddScoped<ISaleCommand, SaleCommand>();
 builder.Services.AddScoped<ISaleProductService, SaleProductService>();
 builder.Services.AddScoped<ISaleProductQuery, SaleProductQuery>();
 
-builder.Services.AddScoped<IList<ProductResponse>, List<ProductResponse>>();
+builder.Services.AddScoped<IList<ProductGetResponse>, List<ProductGetResponse>>();
 builder.Services.AddScoped<IList<SingleSaleProduct>, List<SingleSaleProduct>>();
 builder.Services.AddScoped<ISaleMathematics, SaleMathematics>();
 builder.Services.AddScoped<Sale>();

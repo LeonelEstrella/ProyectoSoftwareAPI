@@ -1,7 +1,6 @@
 ﻿using Application.Interface;
 using Domain.Entities;
 using Infraestructure.Persistence;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infraestructure.Queries
 {

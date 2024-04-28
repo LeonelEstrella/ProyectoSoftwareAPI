@@ -12,7 +12,7 @@ namespace Application.UseCase.SaleProducts
             _query = query;
         }
 
-        public List<SaleProduct> GetSaleProductBySaleId(int saleId)
+        public async Task<List<SaleProduct>> GetSaleProductBySaleId(int saleId)
         {
             var saleProductList = _query.GetSaleProductById(saleId);
             return saleProductList;

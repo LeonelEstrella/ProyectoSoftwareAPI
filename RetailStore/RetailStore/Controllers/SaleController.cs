@@ -53,9 +53,9 @@ namespace RetailStore.Controllers
                 var result = _saleService.GetSalesList(from, to);
                 return new JsonResult(result);
             }
-            catch (NotFoundException ex)
+            catch (BadRequestException ex)
             {
-                return NotFound(new { message = ex.Message });
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

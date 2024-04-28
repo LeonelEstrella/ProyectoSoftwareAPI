@@ -17,7 +17,7 @@ namespace RetailStore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProduct(CreateProductRequest request) 
+        public async Task<IActionResult> PostProduct(ProductRequest request) 
         {
             try
             {
@@ -49,7 +49,7 @@ namespace RetailStore.Controllers
         }
 
         [HttpPatch("{Id}")]
-        public async Task<IActionResult> PatchProduct(Guid Id, CreateProductRequest request)
+        public async Task<IActionResult> PatchProduct(Guid Id, ProductRequest request)
         {
             try
             {
