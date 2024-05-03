@@ -47,6 +47,15 @@ builder.Services.AddScoped<IList<SingleSaleProduct>, List<SingleSaleProduct>>();
 builder.Services.AddScoped<ISaleMathematics, SaleMathematics>();
 builder.Services.AddScoped<Sale>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolitic", app => {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,6 +66,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("NewPolitic");
 
 app.UseAuthorization();
 
