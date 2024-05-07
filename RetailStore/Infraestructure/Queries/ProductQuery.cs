@@ -48,5 +48,10 @@ namespace Infraestructure.Queries
 
             return query.ToList();
         }
+
+        public Product GetProductByNameAndId(string name, Guid productId)
+        {
+            return _context.Product.FirstOrDefault(p => p.Name == name && p.ProductId != productId);
+        }
     }
 }

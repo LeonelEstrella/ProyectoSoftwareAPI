@@ -7,6 +7,7 @@ using Application.Response;
 using Application.Util;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Globalization;
+using Domain.Entities;
 
 namespace Application.UseCase.Sale
 {
@@ -88,7 +89,9 @@ namespace Application.UseCase.Sale
 
             _sale = _saleMathematics.CalculateSale(_productList, _sale);
 
-            if(request.totalPayed != Convert.ToDouble(_sale.TotalPay))
+            decimal roundedSale = Math.Round(_sale.TotalPay, 2);
+
+            if (Convert.ToDouble(request.totalPayed) != Convert.ToDouble(roundedSale))
             {
                 throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
             }

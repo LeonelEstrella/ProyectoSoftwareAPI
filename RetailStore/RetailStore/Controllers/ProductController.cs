@@ -48,7 +48,7 @@ namespace RetailStore.Controllers
             }
         }
 
-        [HttpPatch("{Id}")]
+        [HttpPut("{Id}")]
         public async Task<IActionResult> PatchProduct(Guid Id, ProductRequest request)
         {
             try

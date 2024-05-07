@@ -162,12 +162,12 @@ namespace Application.UseCase.Products
 
             if (currentProduct == null)
             {
-                throw new NotFoundException($"No se ha encontrado el producto.");
+                throw new NotFoundException("");
             }
 
-            if (currentProduct.Name == request.name)
+            if (_query.GetProductByNameAndId(request.name, productId) != null)
             {
-                throw new ConflictException($"Ya existe un producto con el nombre '{request.name}'.");
+                throw new ConflictException($"Ya existe un producto con el nombre '{request.name}' en otro ID distinto al ingresado.");
             }
 
             try
