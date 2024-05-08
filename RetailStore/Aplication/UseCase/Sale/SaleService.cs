@@ -4,6 +4,7 @@ using Application.Interface.SaleMaths;
 using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;
+using Application.UseCase.SaleProducts;
 using Application.Util;
 using System.Globalization;
 
@@ -128,6 +129,7 @@ namespace Application.UseCase.Sale
                 totalProductsBougth += item.Quantity;
                 _singleSaleProduct.Add(new SingleSaleProduct
                 {
+                    id = item.ShoppingCartId,
                     productId = product.id,
                     quantity = item.Quantity,
                     price = Convert.ToDouble(product.price),
@@ -172,20 +174,31 @@ namespace Application.UseCase.Sale
                 toDate = parsedTo;
             }
 
+            if(fromDate > toDate)
+            {
+                throw new BadRequestException("La fecha de inicio no puede ser mayor a la fecha de fin.");
+            }
+
             var salesList = _query.GetSales(fromDate, toDate);
 
             List<SalesListResponse> salesListResponse = new List<SalesListResponse>();
 
-
-            //AGREGAR TRAER SALEPRODUCT POR EL ID DE LA VENTA Y USAR EL CAMPO QUANTITY PARA SUMAR TODAS LAS VENTAS DE ESE PRODUCTO Y ESO PASARLE A TOTALQUANTITY
-
             foreach (var item in salesList)
             {
+                int totalProductsSaled = 0;
+
+                var productList = _saleProductService.GetSaleProductBySaleId(item.SaleId);
+
+                foreach (var product in productList)
+                {
+                    totalProductsSaled += product.Quantity;
+                }
+
                 salesListResponse.Add(new SalesListResponse
                 {
                     id = item.SaleId,
                     totalPay = item.TotalPay,
-                    totalQuantity = salesList.Count, //MIRAR ESTO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    totalQuantity = totalProductsSaled,
                     date = item.Date
                 });
             }

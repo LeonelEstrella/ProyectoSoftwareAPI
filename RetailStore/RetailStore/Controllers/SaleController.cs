@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RetailStore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class SaleController : ControllerBase
     {
