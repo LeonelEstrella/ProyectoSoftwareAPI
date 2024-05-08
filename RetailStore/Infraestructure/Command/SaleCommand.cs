@@ -16,7 +16,7 @@ namespace Infraestructure.Command
             _context = context;
         }
 
-        public async Task<int> RegisterSale(IList<ProductGetResponse> productList, Sale sale)
+        public async Task<int> RegisterSale(IList<SaleProductResponse> productList, Sale sale)
         {
             var newSale = new Sale
             {
@@ -24,7 +24,7 @@ namespace Infraestructure.Command
                 Subtotal = sale.Subtotal,
                 TotalDiscount = sale.TotalDiscount,
                 Taxes = TAXES,
-                DateTime = DateTime.Now,
+                Date = DateTime.Now,
             };
 
             newSale.SaleProduct = new List<SaleProduct>();
@@ -33,8 +33,8 @@ namespace Infraestructure.Command
             { 
                 var saleProduct = new SaleProduct
                 {
-                    ProductId = singleProduct.id,
-                    Quantity = singleProduct.quantity.Value,
+                    Product = singleProduct.id,
+                    Quantity = singleProduct.quantity,
                     Price = singleProduct.price,
                     Discount = singleProduct.discount
                 };

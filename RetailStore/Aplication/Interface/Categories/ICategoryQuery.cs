@@ -4,6 +4,6 @@ namespace Application.Interface.Categories
 {
     public interface ICategoryQuery
     {
-        Category GetById(int categoryId);
+        Task<Category> GetById(int categoryId);
     }
 }

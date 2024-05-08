@@ -5,6 +5,6 @@ namespace Application.Interface.SaleInterface
 {
     public interface ISaleCommand
     {
-       Task<int> RegisterSale(IList<ProductGetResponse> productList, Sale sale);
+       Task<int> RegisterSale(IList<SaleProductResponse> productList, Sale sale);
     }
 }

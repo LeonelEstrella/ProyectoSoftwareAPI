@@ -5,8 +5,8 @@ namespace Application.Interface
     public interface IProductQuery
     {
         List<Product> GetAllProducts(List<int> categories, string name, int skip, int limit);
-        Product GetProductById(Guid productId);
-        Product GetProductByName(string name);
-        Product GetProductByNameAndId(string name, Guid productId);
+        Task<Product> GetProductById(Guid productId);
+        Task<Product> GetProductByName(string name);
+        Task<Product> GetProductByNameAndId(string name, Guid productId);
     }
 }

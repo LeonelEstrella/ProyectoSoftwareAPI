@@ -19,7 +19,7 @@ namespace Infraestructure.Command
             await _context.SaveChangesAsync();
         }
 
-        public async Task PatchProduct(Product product)
+        public async Task PutProduct(Product product)
         {
             _context.Entry(product).CurrentValues.SetValues(product);
             await _context.SaveChangesAsync();

@@ -6,6 +6,6 @@ namespace Application.Interface
     {
         Task InsertProduct(Product product);
         Task RemoveProduct(Product product);
-        Task PatchProduct(Product product);
+        Task PutProduct(Product product);
     }
 }

@@ -8,21 +8,22 @@ namespace Application.Util
     {
         const decimal TAXES = 1.21m;
 
-        public Sale CalculateSale(IList<ProductGetResponse> productList, Sale saleInformation)
+        public Sale CalculateSale(IList<SaleProductResponse> productList, Sale saleInformation)
         {
             
-            foreach (ProductGetResponse product in productList)
+            foreach (SaleProductResponse product in productList)
             {
                 decimal auxSubTotal = 0;
                 decimal auxTotalDiscount = 0;
 
-                auxSubTotal +=  (product.price * product.quantity.Value);
+                auxSubTotal +=  (product.price * product.quantity);
 
                 saleInformation.Subtotal += auxSubTotal;
 
                 if (product.discount != 0) 
                 {
-                    auxTotalDiscount += (product.price - (product.price * (1 - (product.discount / 100M)))) * product.quantity.Value;
+                    decimal discount = product.discount ?? 0;
+                    auxTotalDiscount += (product.price - (product.price * (1 - (discount / 100M)))) * product.quantity;
                     saleInformation.TotalDiscount += auxTotalDiscount;
                 }
 

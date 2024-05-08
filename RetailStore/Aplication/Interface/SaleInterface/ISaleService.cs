@@ -5,7 +5,7 @@ namespace Application.Interface.SaleInterface
 {
     public interface ISaleService
     {
-        List<SalesListResponse> GetSalesList(string from, string to);
+        List<SalesListResponse> GetSalesList(DateTime? from, DateTime? to);
         Task<SingleSaleResponse> CreateSale(CreateSaleRequest request);
         Task<SingleSaleResponse> GetSaleById(int saleId);
     }

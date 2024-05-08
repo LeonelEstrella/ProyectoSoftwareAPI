@@ -12,10 +12,9 @@ namespace Application.UseCase.Categories
             _query = query;
         }
 
-        public Category GetCategoryById(int categoryId)
+        public async Task<Category> GetCategoryById(int categoryId)
         {
-           var category = _query.GetById(categoryId);
-           return  category;
+           return await _query.GetById(categoryId);
         }
     }
 }

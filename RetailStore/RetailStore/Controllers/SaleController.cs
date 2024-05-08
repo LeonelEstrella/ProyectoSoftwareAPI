@@ -31,12 +31,12 @@ namespace RetailStore.Controllers
             }
         }
 
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> GetSale(int Id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSale(int id)
         {
             try
             {
-                var result = await _saleService.GetSaleById(Id);
+                var result = await _saleService.GetSaleById(id);
                 return new JsonResult(result);
             }
             catch (NotFoundException ex)
@@ -46,7 +46,7 @@ namespace RetailStore.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSalesList([FromQuery] string from = "", [FromQuery] string to = "")
+        public async Task<IActionResult> GetSalesList([FromQuery] DateTime? from = null, [FromQuery] DateTime? to = null)
         {
             try
             {

@@ -25,8 +25,12 @@ namespace Application.UseCase.Products
 
         public async Task<ProductGetResponse> CreateProduct(ProductRequest request)
         {
+            if (request.discount < 0 || request.discount >= 100 || request.price <= 0 || string.IsNullOrEmpty(request.name))
+            {
+                throw new BadRequestException("No se pudo crear el producto. Por favor, revise los datos proporcionados.");
+            }
 
-            var existingProduct = _query.GetProductByName(request.name);
+            var existingProduct = await _query.GetProductByName(request.name);
             if (existingProduct != null)
             {
                 throw new ConflictException($"Ya existe un producto con el nombre '{request.name}'.");
@@ -41,22 +45,28 @@ namespace Application.UseCase.Products
                     Description = request.description,
                     Price = Convert.ToDecimal(request.price),
                     Discount = request.discount,
-                    CategoryId = request.category,
-                    ImageLink = request.imageUrl
+                    Category = request.category,
+                    ImageUrl = request.imageUrl
                 };
 
                 await _command.InsertProduct(product);
 
-                var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
+                var categoryObject = await _categoryService.GetCategoryById(product.Category);
+
+                int? discountValue = request.discount.HasValue ? request.discount.Value : null;
+
+                string? imageUrlValue = request.imageUrl != null ? request.imageUrl : null;
+
+                string? descriptionValue = request.description != null ? request.description : null;
 
                 return new ProductGetResponse
                 {
                     id = product.ProductId,
                     name = product.Name,
-                    description = product.Description,
+                    description = descriptionValue,
                     price = product.Price,
-                    discount = product.Discount,
-                    imageUrl = product.ImageLink,
+                    discount = discountValue,
+                    imageUrl = imageUrlValue,
                     category = new ProductCategoryResponse
                     {
                         id = categoryObject.CategoryId,
@@ -67,13 +77,13 @@ namespace Application.UseCase.Products
            
             catch (Exception ex) 
             {
-                throw new BadRequestException("No se pudo crear el producto. Por favor, revise los datos proporcionados.", ex);
+                throw new BadRequestException("No se pudo crear el producto. Por favor, revise los datos proporcionados.");
             }
         }
 
         public async Task<ProductGetResponse> DeleteProductById(Guid productId)
         {
-            var product = _query.GetProductById(productId);
+            var product = await _query.GetProductById(productId);
 
             if (product == null)
             {
@@ -87,16 +97,22 @@ namespace Application.UseCase.Products
 
             await _command.RemoveProduct(product);
 
-            var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
+            var categoryObject = await _categoryService.GetCategoryById(product.Category);
+
+            int? discountValue = product.Discount.HasValue ? product.Discount.Value : null;
+
+            string? imageUrlValue = product.ImageUrl != null ? product.ImageUrl : null;
+
+            string? descriptionValue = product.Description != null ? product.Description : null;
 
             return await Task.FromResult(new ProductGetResponse
             {
                 id = product.ProductId,
                 name = product.Name,
-                description = product.Description,
+                description = descriptionValue,
                 price = product.Price,
-                discount = product.Discount,
-                imageUrl = product.ImageLink,
+                discount = discountValue,
+                imageUrl = imageUrlValue,
                 category = new ProductCategoryResponse
                 {
                     id = categoryObject.CategoryId,
@@ -107,23 +123,29 @@ namespace Application.UseCase.Products
 
         public async Task<ProductGetResponse> GetProductById(Guid productId)
         {
-            var product = _query.GetProductById(productId);
+            var product = await _query.GetProductById(productId);
 
             if (product == null)
             {
-                throw new NotFoundException($"No se ha encontrado el producto.");
+                throw new NotFoundException("No se ha encontrado el producto.");
             }
 
-            var categoryObject = _categoryService.GetCategoryById(product.CategoryId);
+            int? discountValue = product.Discount.HasValue ? product.Discount.Value : null;
+
+            string? imageUrlValue = product.ImageUrl != null ? product.ImageUrl : null;
+
+            string? descriptionValue = product.Description != null ? product.Description : null;
+
+            var categoryObject = await _categoryService.GetCategoryById(product.Category);
 
             return await Task.FromResult(new ProductGetResponse
             {
                 id = product.ProductId,
                 name = product.Name,
-                description = product.Description,
+                description = descriptionValue,
                 price = product.Price,
-                discount = product.Discount,
-                imageUrl = product.ImageLink,
+                discount = discountValue,
+                imageUrl = imageUrlValue,
                 category = new ProductCategoryResponse
                 {
                     id = categoryObject.CategoryId,
@@ -132,23 +154,27 @@ namespace Application.UseCase.Products
             });
         }
 
-        public List<ProductListResponse> GetProductList(List<int> categories, string name, int skip, int limit)
+        public async Task<List<ProductListResponse>> GetProductList(List<int> categories, string name, int offset, int limit)
         {
-            var productsList = _query.GetAllProducts(categories, name, skip, limit);
+            var productsList =  _query.GetAllProducts(categories, name, offset, limit);
 
             List<ProductListResponse> productListResponse = new List<ProductListResponse>();
 
             foreach (var item in productsList)
             {
-                var categoryObject = _categoryService.GetCategoryById(item.CategoryId);
+                var categoryObject = await _categoryService.GetCategoryById(item.Category);
+
+                decimal? discountValue = item.Discount.HasValue ? item.Discount.Value : null;
+
+                string? imageUrlValue = item.ImageUrl != null ? item.ImageUrl : null;
 
                 productListResponse.Add(new ProductListResponse 
                 { 
                     id = item.ProductId,
                     name = item.Name,
                     price = item.Price,
-                    discount = item.Discount,
-                    imageUrl = item.ImageLink,
+                    discount = discountValue,
+                    imageUrl = imageUrlValue,
                     categoryName = categoryObject.Name
                 });
             }
@@ -158,16 +184,23 @@ namespace Application.UseCase.Products
 
         public async Task<ProductGetResponse> UpdateProduct(Guid productId, ProductRequest request)
         {
-            var currentProduct = _query.GetProductById(productId);
+            var currentProduct = await _query.GetProductById(productId);
 
             if (currentProduct == null)
             {
-                throw new NotFoundException("");
+                throw new NotFoundException("No se ha encontrado el producto.");
             }
 
-            if (_query.GetProductByNameAndId(request.name, productId) != null)
+            if (request.discount < 0 || request.discount >= 100 || request.price <= 0 || string.IsNullOrEmpty(request.name))
             {
-                throw new ConflictException($"Ya existe un producto con el nombre '{request.name}' en otro ID distinto al ingresado.");
+                throw new BadRequestException("No se pudo actualizar el producto. Por favor, revise los datos proporcionados.");
+            }
+
+            var sameProductWithDifferentId = await _query.GetProductByNameAndId(request.name, productId);
+
+            if (sameProductWithDifferentId != null)
+            {
+                throw new ConflictException($"Ya existe un producto con el nombre '{request.name}' en el ID: '{sameProductWithDifferentId.ProductId}'.");
             }
 
             try
@@ -176,21 +209,27 @@ namespace Application.UseCase.Products
                 currentProduct.Description = request.description;
                 currentProduct.Price = Convert.ToDecimal(request.price);
                 currentProduct.Discount = request.discount;
-                currentProduct.CategoryId = request.category;
-                currentProduct.ImageLink = request.imageUrl;
+                currentProduct.Category = request.category;
+                currentProduct.ImageUrl = request.imageUrl;
 
-                await _command.PatchProduct(currentProduct);
+                await _command.PutProduct(currentProduct);
 
-                var categoryObject = _categoryService.GetCategoryById(currentProduct.CategoryId);
+                var categoryObject = await _categoryService.GetCategoryById(currentProduct.Category);
+
+                int? discountValue = request.discount.HasValue ? request.discount.Value : null;
+
+                string? imageUrlValue = request.imageUrl != null ? request.imageUrl : null;
+
+                string? descriptionValue = request.description != null ? request.description : null;
 
                 return new ProductGetResponse
                 {
                     id = productId,
                     name = currentProduct.Name,
-                    description = currentProduct.Description,
+                    description = descriptionValue,
                     price = currentProduct.Price,
-                    discount = currentProduct.Discount,
-                    imageUrl = currentProduct.ImageLink,
+                    discount = discountValue,
+                    imageUrl = imageUrlValue,
                     category = new ProductCategoryResponse
                     {
                         id = categoryObject.CategoryId,

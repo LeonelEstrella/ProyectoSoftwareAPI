@@ -5,9 +5,7 @@ using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Globalization;
-using Domain.Entities;
 
 namespace Application.UseCase.Sale
 {
@@ -17,13 +15,13 @@ namespace Application.UseCase.Sale
         private readonly ISaleCommand _command;
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
-        private readonly IList<ProductGetResponse> _productList;
+        private readonly IList<SaleProductResponse> _productList;
         private readonly IList<SingleSaleProduct> _singleSaleProduct;
         private  Domain.Entities.Sale _sale;
         private readonly ISaleMathematics _saleMathematics;
         private readonly ISaleProductService _saleProductService;
 
-        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<ProductGetResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
+        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<SaleProductResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
         {
             _command = command;
             _query = query;
@@ -39,7 +37,7 @@ namespace Application.UseCase.Sale
         {
 
             var totalProductsBougth = 0;
-            
+
             ProductGetResponse product;
 
             foreach (var item in request.products) 
@@ -62,7 +60,7 @@ namespace Application.UseCase.Sale
                 }
                              
 
-                _productList.Add(new ProductGetResponse 
+                _productList.Add(new SaleProductResponse
                 {
                     id = product.id,
                     name = product.name,
@@ -114,19 +112,19 @@ namespace Application.UseCase.Sale
         public async Task<SingleSaleResponse> GetSaleById(int saleId)
         {
             var totalProductsBougth = 0;
-            var currentSale = _query.GetSaleById(saleId);          
+            var currentSale = await _query.GetSaleById(saleId);          
 
             if (currentSale == null)
             {
                 throw new NotFoundException($"No se ha encontrado la venta.");
             }
             
-            var productIdList = await _saleProductService.GetSaleProductBySaleId(saleId);
+            var productIdList = _saleProductService.GetSaleProductBySaleId(saleId);
 
 
             foreach (var item in productIdList )
             {
-                var product = (_serviceProduct.GetProductById(item.ProductId)).Result;
+                var product = (await _serviceProduct.GetProductById(item.Product));
                 totalProductsBougth += item.Quantity;
                 _singleSaleProduct.Add(new SingleSaleProduct
                 {
@@ -145,31 +143,31 @@ namespace Application.UseCase.Sale
                 subtotal = Convert.ToDouble(currentSale.Subtotal),
                 totalDiscount = currentSale.TotalDiscount,
                 taxes = Convert.ToDouble(currentSale.Taxes),
-                date = currentSale.DateTime,
+                date = currentSale.Date,
                 products = _singleSaleProduct.ToList()
 
             });
         }
 
-        public List<SalesListResponse> GetSalesList(string from, string to)
+        public List<SalesListResponse> GetSalesList(DateTime? from, DateTime? to)
         {
             DateTime? fromDate = null;
             DateTime? toDate = null;
 
-            if (!string.IsNullOrEmpty(from))
+            if (from.HasValue)
             {
-                if (!DateTime.TryParseExact(from, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedFrom))
+                if (!DateTime.TryParseExact(from.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedFrom))
                 {
-                    throw new BadRequestException("La fecha de inicio no tiene el formato correcto (yyyy-MM-ddTHH:mm:ss).");
+                    throw new BadRequestException("La fecha de inicio no tiene el formato correcto (yyyy-MM-dd).");
                 }
                 fromDate = parsedFrom;
             }
 
-            if (!string.IsNullOrEmpty(to))
+            if (to.HasValue)
             {
-                if (!DateTime.TryParseExact(to, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedTo))
+                if (!DateTime.TryParseExact(to.Value.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedTo))
                 {
-                    throw new BadRequestException("La fecha de fin no tiene el formato correcto (yyyy-MM-ddTHH:mm:ss).");
+                    throw new BadRequestException("La fecha de fin no tiene el formato correcto (yyyy-MM-dd).");
                 }
                 toDate = parsedTo;
             }
@@ -178,14 +176,17 @@ namespace Application.UseCase.Sale
 
             List<SalesListResponse> salesListResponse = new List<SalesListResponse>();
 
+
+            //AGREGAR TRAER SALEPRODUCT POR EL ID DE LA VENTA Y USAR EL CAMPO QUANTITY PARA SUMAR TODAS LAS VENTAS DE ESE PRODUCTO Y ESO PASARLE A TOTALQUANTITY
+
             foreach (var item in salesList)
             {
                 salesListResponse.Add(new SalesListResponse
                 {
                     id = item.SaleId,
                     totalPay = item.TotalPay,
-                    totalQuantity = 0,
-                    date = item.DateTime,
+                    totalQuantity = salesList.Count, //MIRAR ESTO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    date = item.Date
                 });
             }
 

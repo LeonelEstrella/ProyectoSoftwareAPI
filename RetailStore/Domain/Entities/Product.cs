@@ -8,15 +8,22 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ProductId { get; set; }
-        public required string Name { get; set; }
-        public string? Description { get; set; }
-        public decimal Price { get; set; }
-        public int Discount { get; set; }
-        public int CategoryId { get; set; }
-        public string ImageLink { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Name { get; set; }
+        public string? Description { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
+        public int? Discount { get; set; }
+
+        [Required]
+        public int Category { get; set; }
+        public string? ImageUrl { get; set; }
+
+        [ForeignKey("Category")]
+        public Category category { get; set; }
         public ICollection<SaleProduct> SaleProduct { get; set; }
     }
 }

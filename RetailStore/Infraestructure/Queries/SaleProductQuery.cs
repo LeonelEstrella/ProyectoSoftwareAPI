@@ -15,12 +15,12 @@ namespace Infraestructure.Queries
 
         public List<SaleProduct> GetSaleProductById(int saleId)
         {
-            return _context.SaleProduct.Where(sp => sp.SaleId == saleId).ToList();
+            return _context.SaleProduct.Where(sp => sp.Sale == saleId).ToList();
         }
 
         public bool ProductExistInSale(Guid productId)
         {
-            return _context.SaleProduct.Where(sp => sp.ProductId == productId).Any();
+            return _context.SaleProduct.Where(sp => sp.Product == productId).Any();
         }
     }
 }

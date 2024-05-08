@@ -34,12 +34,12 @@ namespace RetailStore.Controllers
             }
         }
 
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProduct(Guid Id) 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(Guid id) 
         {
             try
             {
-                var result = await _productService.GetProductById(Id);
+                var result = await _productService.GetProductById(id);
                 return new JsonResult(result);
             }
             catch (NotFoundException ex)
@@ -48,12 +48,12 @@ namespace RetailStore.Controllers
             }
         }
 
-        [HttpPut("{Id}")]
-        public async Task<IActionResult> PatchProduct(Guid Id, ProductRequest request)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct(Guid id, ProductRequest request)
         {
             try
             {
-                var result = await _productService.UpdateProduct(Id, request);
+                var result = await _productService.UpdateProduct(id, request);
                 return new JsonResult(result);
             }
             catch (NotFoundException ex)
@@ -70,12 +70,12 @@ namespace RetailStore.Controllers
             }
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductById(Guid Id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProductById(Guid id)
         {
             try
             {
-                var result = await _productService.DeleteProductById(Id);
+                var result = await _productService.DeleteProductById(id);
                 return new JsonResult(result);
             }
             catch (NotFoundException ex)
@@ -92,18 +92,12 @@ namespace RetailStore.Controllers
         public async Task<IActionResult> GetProductList(
             [FromQuery] List<int> categories = null,
             [FromQuery] string name = "",
-            [FromQuery] int skip = 0,
-            [FromQuery] int limit = 0)
+            [FromQuery] int limit = 0,
+            [FromQuery] int offset = 0)
+            
         {
-            try
-            {
-                var result = _productService.GetProductList(categories, name, skip, limit);
-                return new JsonResult(result);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            var result = await _productService.GetProductList(categories, name, offset, limit);
+            return new JsonResult(result);
         }
     }
 }

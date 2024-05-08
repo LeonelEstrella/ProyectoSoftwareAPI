@@ -1,6 +1,7 @@
 ﻿using Application.Interface;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -12,33 +13,33 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public Product GetProductById(Guid productId)
+        public async Task<Product> GetProductById(Guid productId)
         {
-            return _context.Product.FirstOrDefault(p => p.ProductId == productId);
+            return await _context.Product.FirstOrDefaultAsync(p => p.ProductId == productId);
         }
 
-        public Product GetProductByName(string name)
+        public async Task<Product> GetProductByName(string name)
         {
-            return _context.Product.FirstOrDefault(p => p.Name == name);
+            return await _context.Product.FirstOrDefaultAsync(p => p.Name == name);
         }
 
-        public List<Product> GetAllProducts(List<int> categories, string name, int skip, int limit)
+        public List<Product> GetAllProducts(List<int> categories, string name, int offset, int limit)
         {
             IQueryable<Product> query = _context.Product;
 
             if (!string.IsNullOrEmpty(name))
             {
-                query = query.Where(p => p.Name.Contains(name));
+                query =  query.Where(p => p.Name.Contains(name));
             }
 
             if (categories != null && categories.Any())
             {
-                query = query.Where(p => categories.Contains(p.CategoryId));
+                query = query.Where(p => categories.Contains(p.Category));
             }
 
-            if (skip > 0)
+            if (offset > 0)
             {
-                query = query.Skip(skip);
+                query = query.Skip(offset);
             }
 
             if (limit > 0)
@@ -49,9 +50,9 @@ namespace Infraestructure.Queries
             return query.ToList();
         }
 
-        public Product GetProductByNameAndId(string name, Guid productId)
+        public async Task<Product> GetProductByNameAndId(string name, Guid productId)
         {
-            return _context.Product.FirstOrDefault(p => p.Name == name && p.ProductId != productId);
+            return await _context.Product.FirstOrDefaultAsync(p => p.Name == name && p.ProductId != productId);
         }
     }
 }

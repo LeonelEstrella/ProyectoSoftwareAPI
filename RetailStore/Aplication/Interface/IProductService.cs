@@ -8,7 +8,7 @@ namespace Application.Interface
     {
         Task<ProductGetResponse> CreateProduct(ProductRequest request);
         Task<ProductGetResponse> UpdateProduct(Guid productId, ProductRequest request);
-        List<ProductListResponse> GetProductList(List<int> categories, string name, int skip, int limit);
+        Task<List<ProductListResponse>> GetProductList(List<int> categories, string name, int skip, int limit);
         Task<ProductGetResponse> GetProductById(Guid productId);
         Task<ProductGetResponse> DeleteProductById(Guid productId); 
     }

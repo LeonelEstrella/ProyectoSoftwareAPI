@@ -1,6 +1,7 @@
 ﻿using Application.Interface.SaleInterface;
 using Domain.Entities;
 using Infraestructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Queries
 {
@@ -13,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public Sale GetSaleById(int saleId)
+        public async Task<Sale> GetSaleById(int saleId)
         {
-            return _context.Sale.FirstOrDefault(s => s.SaleId == saleId);
+            return await _context.Sale.FirstOrDefaultAsync(s => s.SaleId == saleId);
         }
 
         public List<Sale> GetSales(DateTime? fromDate, DateTime? toDate)
@@ -24,12 +25,12 @@ namespace Infraestructure.Queries
 
             if (fromDate.HasValue)
             {
-                query = query.Where(s => s.DateTime >= fromDate);
+                query = query.Where(s => s.Date >= fromDate);
             }
 
             if (toDate.HasValue)
             {
-                query = query.Where(s => s.DateTime <= toDate);
+                query = query.Where(s => s.Date <= toDate);
             }
             
             return query.ToList();

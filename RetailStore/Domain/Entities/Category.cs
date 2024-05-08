@@ -8,7 +8,9 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
-        public required string Name { get; set; }
+
+        [MaxLength(100)]
+        public string? Name { get; set; }
         public IList<Product> Products { get; set; }
     }
 }

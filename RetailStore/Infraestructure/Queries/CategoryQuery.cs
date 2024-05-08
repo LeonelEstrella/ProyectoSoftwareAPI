@@ -14,9 +14,9 @@ namespace Infraestructure.Queries
             _context = context;
         }
 
-        public Category GetById(int categoryId)
+        public async Task<Category> GetById(int categoryId)
         {
-            return _context.Category.FirstOrDefault(c => c.CategoryId == categoryId);
+            return await _context.Category.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
         }
     }
 }
