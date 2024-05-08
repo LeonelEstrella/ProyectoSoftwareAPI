@@ -3,7 +3,7 @@
     public class CreateSaleRequest
     {
         public List<CreateSaleProducts>? products { get; set; }
-        public double totalPayed { get; set; }
+        public decimal totalPayed { get; set; }
     }
 
     public class CreateSaleProducts

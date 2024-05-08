@@ -11,7 +11,7 @@ namespace Application.UseCase.Sale
 {
     public class SaleService : ISaleService
     {
-        const double TAXES = 1.21;
+        const decimal TAXES = 1.21m;
         private readonly ISaleCommand _command;
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
@@ -99,9 +99,9 @@ namespace Application.UseCase.Sale
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = saleId,
-                totalPay = Convert.ToDouble(_sale.TotalPay),
+                totalPay = _sale.TotalPay,
                 totalQuantity = totalProductsBougth,
-                subtotal = Convert.ToDouble(_sale.Subtotal),
+                subtotal = _sale.Subtotal,
                 totalDiscount = _sale.TotalDiscount,
                 taxes = TAXES,
                 date = DateTime.Now,
@@ -116,7 +116,7 @@ namespace Application.UseCase.Sale
 
             if (currentSale == null)
             {
-                throw new NotFoundException($"No se ha encontrado la venta.");
+                throw new NotFoundException("No se ha encontrado la venta.");
             }
             
             var productIdList = _saleProductService.GetSaleProductBySaleId(saleId);
@@ -138,11 +138,11 @@ namespace Application.UseCase.Sale
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = currentSale.SaleId,
-                totalPay = Convert.ToDouble(currentSale.TotalPay),
+                totalPay = currentSale.TotalPay,
                 totalQuantity = totalProductsBougth,
-                subtotal = Convert.ToDouble(currentSale.Subtotal),
+                subtotal = currentSale.Subtotal,
                 totalDiscount = currentSale.TotalDiscount,
-                taxes = Convert.ToDouble(currentSale.Taxes),
+                taxes = currentSale.Taxes,
                 date = currentSale.Date,
                 products = _singleSaleProduct.ToList()
 

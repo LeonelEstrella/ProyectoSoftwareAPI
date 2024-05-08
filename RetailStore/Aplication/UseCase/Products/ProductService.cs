@@ -87,12 +87,12 @@ namespace Application.UseCase.Products
 
             if (product == null)
             {
-                throw new NotFoundException($"No se ha encontrado el producto.");
+                throw new NotFoundException("No se ha encontrado el producto.");
             }
 
             if (_saleProductService.WasProductSale(productId)) 
             {
-                throw new ConflictException($"No se puede borrar este producto porque se encuentra asociado a una venta.");
+                throw new ConflictException("No se puede borrar este producto porque se encuentra asociado a una venta.");
             }
 
             await _command.RemoveProduct(product);
