@@ -1,11 +1,10 @@
 ﻿using Application.Interface.ProductInterfaces;
 using Application.Interface.SaleInterfaces;
-using Application.Interface.SaleMathsInterfaces;
 using Application.Interface.SaleProductInterfaces;
+using Application.Interface.UsefulSalesMethodsInterfaces;
 using Application.Models;
 using Application.Response;
 using Application.Util;
-using Domain.Entities;
 using System.Globalization;
 
 namespace Application.UseCase.Sale
@@ -17,130 +16,35 @@ namespace Application.UseCase.Sale
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
         private readonly IList<SingleSaleProduct> _singleSaleProduct;
-        private readonly ISaleMathematics _saleMathematics;
         private readonly ISaleProductService _saleProductService;
+        private readonly IUsefulSalesMethods _usefulSalesMethods;
 
-        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
+        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService, IUsefulSalesMethods usefulSalesMethods)
         {
             _command = command;
             _query = query;
             _serviceProduct = service;
-            _saleMathematics = saleMathematics;
             _singleSaleProduct = singleSaleProduct;
             _saleProductService = saleProductService;
+            _usefulSalesMethods = usefulSalesMethods;
         }
 
         public async Task<SingleSaleResponse> CreateSale(CreateSaleRequest request)
         {
 
-            var totalProductsBougth = 0;
+            var allProductInformationList = await _usefulSalesMethods.CreateAllProductInformationList(request);
 
-            List<AllSaleInformation> allProductInformationList = new List<AllSaleInformation>();
-            ProductGetResponse product;
-
-            Domain.Entities.Sale sale = new Domain.Entities.Sale
-            {
-                Date = DateTime.Now,
-                SaleProduct = new List<SaleProduct>()
-            };
-
-            foreach (var item in request.products) 
-            {
-                totalProductsBougth += item.quantity;
-
-                if (item.quantity <= 0)
-                {
-                    throw new BadRequestException("La cantidad del producto debe ser mayor que 0.");
-                }
-
-                try 
-                {
-                    product = await _serviceProduct.GetProductById(item.productId);
-                }
-
-                catch (Exception ex) 
-                {
-                    throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
-                }
-
-                var singleProduct = new AllSaleInformation.SingleSaleProduct
-                {
-                    productId = product.id,
-                    quantity = item.quantity,
-                    price = product.price,
-                    discount = product.discount
-                };
-
-                allProductInformationList.Add(new AllSaleInformation
-                {
-                    id = product.id,
-                    name = product.name,
-                    description = product.description,
-                    price = product.price,
-                    discount = product.discount,
-                    imageUrl = product.imageUrl,
-                    quantity = item.quantity,
-                    category = new ProductCategoryResponse
-                    {
-                        id = product.category.id,
-                        name = product.category.name
-                    },
-                    products = new List<AllSaleInformation.SingleSaleProduct> { singleProduct }
-                });
-            }
-
-            var total = _saleMathematics.CalculateSale(allProductInformationList);
-
-            decimal roundedSale = Math.Round(total.TotalPay, 2);
-            decimal requestTotal = Math.Round(request.totalPayed, 2);
-
-            if (Convert.ToDouble(requestTotal) != Convert.ToDouble(roundedSale))
-            {
-                throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
-            }
-
-
-            foreach (var item in allProductInformationList)
-            {
-                sale.SaleProduct.Add(new SaleProduct
-                {
-                    Product = item.id,
-                    Quantity = item.quantity,
-                    Price = item.price,
-                    Discount = item.discount
-                });
-            }
-            sale.Subtotal = total.Subtotal;
-            sale.TotalDiscount = total.TotalDiscount;
-            sale.Taxes = TAXES;
-            sale.TotalPay = total.TotalPay;
+            var sale = _usefulSalesMethods.CreateSaleEntity(allProductInformationList, request);
 
             var saleId = await _command.RegisterSale(sale);
 
-            var saledProducts = _saleProductService.GetSaleProductBySaleId(saleId);
-            var mappedProducts = new List<Application.Response.SingleSaleProduct>();
-
-            for (int i = 0; i < saledProducts.Count; i++)
-            {
-
-                var singleSaleProduct = new Application.Response.SingleSaleProduct
-                {
-                    id = saledProducts[i].ShoppingCartId,
-                    productId = saledProducts[i].Product,
-                    quantity = saledProducts[i].Quantity,
-                    price = saledProducts[i].Price,
-                    discount = saledProducts[i].Discount
-                };
-
-                mappedProducts.Add(singleSaleProduct);
-            }
-            
+            var mappedProducts = _usefulSalesMethods.GetMappedProducts(saleId);
 
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = saleId,
                 totalPay = sale.TotalPay,
-                totalQuantity = totalProductsBougth,
+                totalQuantity = allProductInformationList.Sum(p => p.quantity),
                 subtotal = sale.Subtotal,
                 totalDiscount = sale.TotalDiscount,
                 taxes = TAXES,

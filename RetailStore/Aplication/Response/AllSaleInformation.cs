@@ -15,16 +15,16 @@
         public decimal totalDiscount { get; set; }
         public decimal taxes { get; set; }
         public DateTime date { get; set; }
-        public List<SingleSaleProduct> products { get; set; }
-        public ProductCategoryResponse category { get; set; }
+        public List<AllSaleInformationSingleSaleProduct> products { get; set; }
+        public AllSaleInformationCategoryResponse category { get; set; }
 
-        public class ProductSaleCategoryResponse
+        public class AllSaleInformationCategoryResponse
         {
             public int id { get; set; }
             public string? name { get; set; }
         }
 
-        public class SingleSaleProduct
+        public class AllSaleInformationSingleSaleProduct
         {
             public int id { get; set; }
             public Guid productId { get; set; }

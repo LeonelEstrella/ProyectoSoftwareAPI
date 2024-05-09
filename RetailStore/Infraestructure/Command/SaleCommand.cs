@@ -1,5 +1,4 @@
 ﻿using Application.Interface.SaleInterfaces;
-using Application.Response;
 using Domain.Entities;
 using Infraestructure.Persistence;
 
