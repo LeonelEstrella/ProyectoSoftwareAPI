@@ -1,4 +1,4 @@
-﻿using Application.Interface;
+﻿using Application.Interface.ProductInterfaces;
 using Application.Models;
 using Application.Util;
 using Microsoft.AspNetCore.Mvc;

@@ -1,7 +1,6 @@
-﻿using Application.Interface.SaleInterface;
+﻿using Application.Interface.SaleInterfaces;
 using Application.Models;
 using Application.Util;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RetailStore.Controllers

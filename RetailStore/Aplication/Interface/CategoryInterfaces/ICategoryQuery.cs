@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Application.Interface.Categories
+namespace Application.Interface.CategoryInterfaces
 {
     public interface ICategoryQuery
     {

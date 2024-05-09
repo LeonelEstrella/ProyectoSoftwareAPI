@@ -1,4 +1,4 @@
-﻿using Application.Interface.Categories;
+﻿using Application.Interface.CategoryInterfaces;
 using Domain.Entities;
 
 namespace Application.UseCase.Categories

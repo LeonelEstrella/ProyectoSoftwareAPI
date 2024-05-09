@@ -1,4 +1,4 @@
-﻿using Application.Interface.SaleInterface;
+﻿using Application.Interface.SaleInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;

@@ -1,7 +1,7 @@
-using Application.Interface;
-using Application.Interface.Categories;
-using Application.Interface.SaleInterface;
-using Application.Interface.SaleMaths;
+using Application.Interface.CategoryInterfaces;
+using Application.Interface.ProductInterfaces;
+using Application.Interface.SaleInterfaces;
+using Application.Interface.SaleMathsInterfaces;
 using Application.Interface.SaleProductInterfaces;
 using Application.Response;
 using Application.UseCase.Categories;

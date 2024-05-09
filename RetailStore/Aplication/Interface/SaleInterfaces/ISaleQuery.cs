@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Application.Interface.SaleInterface
+namespace Application.Interface.SaleInterfaces
 {
     public interface ISaleQuery
     {

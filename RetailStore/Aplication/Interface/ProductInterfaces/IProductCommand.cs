@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Application.Interface
+namespace Application.Interface.ProductInterfaces
 {
     public interface IProductCommand
     {
