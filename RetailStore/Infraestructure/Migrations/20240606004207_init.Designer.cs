@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240509230733_init")]
+    [Migration("20240606004207_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -129,131 +129,131 @@ namespace Infraestructure.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("9db55930-63ad-485a-be70-0d9d1d946309"),
+                            ProductId = new Guid("d0e6ca64-a5d8-4787-8fa9-81ae2b0cfdce"),
                             Category = 1,
                             Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.",
                             Discount = 31,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_661063-MLU74118278062_012024-O.webp",
+                            ImageUrl = "https://drean.com.ar/medias/1200Wx1200H-A-Heladera-Ciclica-Drean-HDR320F00N-1.jpg?context=bWFzdGVyfGltYWdlc3wxMjYyMjJ8aW1hZ2UvanBlZ3xhRGhtTDJoa1ppOHhNVEV3T1RjMk9UTTBOekV3TWk4eE1qQXdWM2d4TWpBd1NGOUJMVWhsYkdGa1pYSmhMVU5wWTJ4cFkyRXRSSEpsWVc0dFNFUlNNekl3UmpBd1RpMHhMbXB3Wnd8ZmUzZWY3NzYyMmI2MDIwN2FhY2UxNGUyMGFiMWU0MGJhMWM2ZDllZDM4ZTU0ZjgyZjMxODRiYTEzMTgyZmI1MQ",
                             Name = "Heladera Drean HDR400F11 steel con freezer 396L 220V",
                             Price = 1298199m
                         },
                         new
                         {
-                            ProductId = new Guid("a2d73d63-9fbd-456c-b930-d07b62cc48b9"),
+                            ProductId = new Guid("d4c3af8a-d27c-45d8-95b3-312597c0c9ed"),
                             Category = 1,
                             Description = "Únicamente necesita que se introduzcan los productos de limpieza y se elija el programa deseado.",
                             Discount = 39,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_944011-MLA74651986202_022024-O.webp",
+                            ImageUrl = "https://www.dmaker.com/media/catalog/product/7/0/709803860_1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700",
                             Name = "Lavarropas automático Drean Next 8.14 P ECO inverter blanco 8kg 220 V",
                             Price = 744292m
                         },
                         new
                         {
-                            ProductId = new Guid("e814e78a-2ca9-4a75-99ea-60a37428435c"),
+                            ProductId = new Guid("12aad569-6e62-44c5-bca3-ab5bf839238f"),
                             Category = 1,
                             Description = "Marca líder mundial en la comercialización de electrodomésticos que orienta su trabajo en la tecnología, el diseño y la innovación para mejorar la calidad de vida.",
                             Discount = 47,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_973805-MLU74159511409_012024-O.webp",
+                            ImageUrl = "https://drean.com.ar/medias/1200Wx1200H-A-Lavavajillas-Drean-DISH15.2DTX-1.jpg?context=bWFzdGVyfGltYWdlc3wyNjc1Mjd8aW1hZ2UvanBlZ3xhRGN6TDJoaE5TOHhNVEV3TURnME1qYzFOREEzT0M4eE1qQXdWM2d4TWpBd1NGOUJMVXhoZG1GMllXcHBiR3hoY3kxRWNtVmhiaTFFU1ZOSU1UVXVNa1JVV0MweExtcHdad3wwMjVkMDQ4ODQ1NzUwODkxMGRlOWU4YTNkYjgyN2QyOGVjZjM5NDMzY2E5YThkZjk1M2U4OWE4YmFjZDAyNjRi",
                             Name = "Lavavajilla Drean Dish 12.2 Ltx 12 Cubiertos Acero",
                             Price = 1209224m
                         },
                         new
                         {
-                            ProductId = new Guid("6c5d699c-d995-4c75-9254-f012cf91d6fe"),
+                            ProductId = new Guid("c5cd79b1-8026-4649-90ec-d190597fbc1a"),
                             Category = 1,
-                            Description = "Freidora de Aire Gadnic F4.0 Sin Aceite 4Lts Digital",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_862380-MLU74244415875_012024-O.webp",
+                            Description = "Freidora de Aire Gadnic F4.0 Sin Aceite 4Lts Digital.",
+                            ImageUrl = "https://www.ecelectronica.com.ar/10774-large_default/freidora-de-aire-caliente-sin-aceite-electrica-4-lts-vonne.jpg",
                             Name = "Freidora Eléctrica De Aire Sin Aceite + Pinza Gratis 1400w Color Negro",
                             Price = 124999m
                         },
                         new
                         {
-                            ProductId = new Guid("e58e28c2-e164-4a6c-a4bc-2e372644caa9"),
+                            ProductId = new Guid("640922de-f6d4-4fff-a357-2035bc25ef75"),
                             Category = 2,
                             Description = "El Robot de limpieza ATMA facilita la tarea de mantener los pisos impecables, combinando las funciones de aspirar y trapear simultáneamente.",
                             Discount = 19,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_898750-MLU73587878148_122023-O.webp",
+                            ImageUrl = "https://images.fravega.com/f500/86482108dd01b2588c7231a760ea7c32.jpg",
                             Name = "Aspiradora Trapeadora Robot Atma Atar21c1dh Blanca 220v",
                             Price = 668249m
                         },
                         new
                         {
-                            ProductId = new Guid("2c6ee745-e67f-4a03-97af-687958ebb5bc"),
+                            ProductId = new Guid("8ccddc25-e291-442a-ac7d-400feebbdb7c"),
                             Category = 2,
                             Description = "Con tu consola Switch tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos. ",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_Q_NP_803086-MLA47920649105_102021-O.webp",
                             Name = "Nintendo Switch OLED 64GB Standard color rojo neón, azul neón y negro",
                             Price = 517999m
                         },
                         new
                         {
-                            ProductId = new Guid("ea5788bb-ebaa-45ce-a868-d912e77ce925"),
+                            ProductId = new Guid("5ff5e951-9307-4af4-97d5-ffccc2387b6b"),
                             Category = 2,
-                            Description = "Cargador Móvil Gadnic con LED Indicador de Batería 25000 mAh",
+                            Description = "Cargador Móvil Gadnic con LED Indicador de Batería 25000 mAh.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_639848-MLU73345299871_122023-O.webp",
                             Name = "Cargador Móvil Con Lde Indicador De Batería 25000 Mah Color Negro",
                             Price = 41749m
                         },
                         new
                         {
-                            ProductId = new Guid("b2ee5d08-3239-42ef-afcd-e5c2040250bd"),
+                            ProductId = new Guid("ae89f931-1af7-4d0e-981d-440f1b2eb919"),
                             Category = 2,
                             Description = "Google TV de Philips le ofrece el contenido que desea, cuando lo desee. Puede personalizar su pantalla principal para mostrar sus aplicaciones favoritas.",
                             Discount = 11,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_677196-MLU74154724021_012024-O.webp",
+                            ImageUrl = "https://76338a6a.flyingcdn.com/44030-large_default/philips-led-tv-32-phd691877-google-tv-tv-hd-hdmi-usb-control-voz-tda-.jpg",
                             Name = "Tv Smart Led Philips 32 Hd 32phd6918/77 Google Tv",
                             Price = 269999m
                         },
                         new
                         {
-                            ProductId = new Guid("8d61603e-8e56-4aee-bdce-6f2d0f8f7c3f"),
+                            ProductId = new Guid("2d1e6b22-4ae0-480e-ae2a-00b00c0bdab0"),
                             Category = 3,
-                            Description = "PULSERA DE ACERO QUIRURGICO 2 EN 1",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_727752-MLA47723827894_102021-O.webp",
+                            Description = "PULSERA DE ACERO QUIRURGICO 2 EN 1.",
+                            ImageUrl = "https://importadora376.com.ar/wp-content/uploads/2021/12/DL-PUL20615S.jpg",
                             Name = "Combo Pulsera Hombre 2 En 1 Acero Quirugico Inoxidable Pack",
                             Price = 2547.25m
                         },
                         new
                         {
-                            ProductId = new Guid("9d225feb-54cc-4ca0-bb8f-74c746f49faf"),
+                            ProductId = new Guid("9a7046e1-2659-471f-b14c-5b6921f3ab72"),
                             Category = 3,
                             Description = "Shoter premium shoe cleaner es un producto innovador para la limpieza de calzado urbano y deportivo.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_659147-MLA40000388003_122019-O.webp",
+                            ImageUrl = "https://essential.vtexassets.com/arquivos/ids/862812-800-auto?v=638235033358400000&width=800&height=auto&aspect=true",
                             Name = "Limpia Zapatillas Shoter - Kit (limpiador Premium + Cepillo)",
                             Price = 18400m
                         },
                         new
                         {
-                            ProductId = new Guid("10f17e43-5cae-4c92-bd56-8e56ef3f88df"),
+                            ProductId = new Guid("12d2c4d1-71a5-4e83-a4d8-f414ccb203c3"),
                             Category = 3,
                             Description = "PANTALON CARGO JOGGER 4 BOLSILLOS Y 2 SOLAPAS TRASERAS DE GABARDINA.",
                             Discount = 10,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_964819-MLA70940869495_082023-O.webp",
+                            ImageUrl = "https://alcatraz.com.ar/2602-large_default/pantalon-alcatraz-ultra-negro-hombre-y-mujer.jpg",
                             Name = "Pantalones Hombre Cargo Gabardina Bolsillos Casuales Jogger",
                             Price = 21899m
                         },
                         new
                         {
-                            ProductId = new Guid("27c01753-b172-44b5-9be6-2d21cffb5f59"),
+                            ProductId = new Guid("3f778370-a1dd-4fac-8489-a84a07618bbe"),
                             Category = 3,
                             Description = "Bolso Wilson 65.150005.",
                             Discount = 11,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_910443-MLU72877827774_112023-O.webp",
+                            ImageUrl = "https://acdn.mitiendanube.com/stores/003/429/444/products/65-151005__5-ed12a1fa2666b02e3e17031783821796-1024-1024.jpg",
                             Name = "Bolso Wilson Deportivo Viaje Urbano Gimnasio Cierre Color Verde Liso",
                             Price = 39999m
                         },
                         new
                         {
-                            ProductId = new Guid("be8d84a9-f4bc-4c1d-902a-2fc140eb8fb5"),
+                            ProductId = new Guid("70b47609-8ee6-4cd3-9685-9935ca92a0bb"),
                             Category = 4,
                             Description = "Pileta Encastrable HARDEST Modelo HQ-113XT.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_760812-MLA54507511656_032023-O.webp",
+                            ImageUrl = "https://images.fravega.com/f500/ae7eef26b384dd0cfdd6f5276ff92299.jpg",
                             Name = "Bacha Cocina Pileta Simple Acero Inoxidable Dosificador 56cm",
                             Price = 102999m
                         },
                         new
                         {
-                            ProductId = new Guid("54f45b68-7620-4451-9a54-2c0a648f40c2"),
+                            ProductId = new Guid("cbbf58f3-660e-4429-aa2c-10e4050eae20"),
                             Category = 4,
                             Description = "TENDER DE PIE ACERO CON ALAS.",
                             Discount = 15,
@@ -263,36 +263,36 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("db3aee75-4ed5-4cf7-9258-6f008a12e16a"),
+                            ProductId = new Guid("5f92d388-ebb3-417e-a3e6-91a427f48e89"),
                             Category = 4,
                             Description = "Cuadro moderno decorativo calado sobre madera mdf ideal para hogar casa oficina living ambientes minimalistas degrade.",
                             Discount = 5,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_937605-MLU71497717015_092023-O.webp",
+                            ImageUrl = "https://mondecoshop.com/wp-content/uploads/2018/04/JA-83582-cuadro-madera-hojas-blancas.jpg",
                             Name = "Cuadro Madera Calado Hojas Moderno Living Decorativo Color Degrade",
                             Price = 13999m
                         },
                         new
                         {
-                            ProductId = new Guid("971fc7cb-dc7c-4613-a74d-94cba3728785"),
+                            ProductId = new Guid("fb784cf8-941d-4c58-8b8e-e753ff4ef6c0"),
                             Category = 4,
                             Description = "Cortina Guirnalda Estrellas Luz Led Cálida Amarilla Efectos.",
                             Discount = 67,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_817788-MLA73104183943_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_810631-MLA52751735019_122022-O.webp",
                             Name = "Cortina Guirnalda Estrellas Luz Led Calida Amarilla Efectos",
                             Price = 29000m
                         },
                         new
                         {
-                            ProductId = new Guid("3984a743-593b-4fde-bb8f-30f264d99d44"),
+                            ProductId = new Guid("44a5f009-3f24-43b9-87b0-6db81da3fe47"),
                             Category = 5,
                             Description = "Bienvenido a la tienda oficial de SanCor Bebé, donde podés comprar todos nuestros productos directo de fábrica, pagarlos online y recibirlos donde quieras de forma segura y confiable.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_808805-MLA51087990624_082022-O.webp",
+                            ImageUrl = "https://www.anikashop.com.ar/product_images/w/563/BioGaia-gotas-probioticas__01751_zoom.png",
                             Name = "Biogaia Gotas Probioticas Suplemento Dietario X 5 Ml",
                             Price = 25814m
                         },
                         new
                         {
-                            ProductId = new Guid("a7f65493-c835-4395-ae7b-77f3cecfecab"),
+                            ProductId = new Guid("8816c07c-d4ec-41d0-a81c-cf804355165d"),
                             Category = 5,
                             Description = "El Aspirador Nasal Asistido Nuby es el aliado perfecto para cuidar la salud de tu bebé desde los primeros meses de vida.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_661607-MLU72831502725_112023-O.webp",
@@ -301,34 +301,34 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5ea3173b-b79e-4e23-bce2-73bb41aecb1c"),
+                            ProductId = new Guid("6f845f6c-53ee-45c0-a74c-3d2824345a64"),
                             Category = 5,
                             Description = "KIT DE CUIDADO FACIAL COMPLETO.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_614555-MLA48554874576_122021-O.webp",
-                            Name = "Kit Limpieza Cuidado Facial Belleza Mascarilla Cepillo",
+                            ImageUrl = "https://images.fravega.com/f1000/b2744115bf9175e98017c8fd6e1a3abd.jpg",
+                            Name = "Kit Limpieza Cuidado Facial Belleza Mascarilla",
                             Price = 22999m
                         },
                         new
                         {
-                            ProductId = new Guid("907bc934-c65a-4399-a4dd-45464532034d"),
+                            ProductId = new Guid("f66f2b23-592c-4d52-b860-d897620a1006"),
                             Category = 5,
-                            Description = "Contenido 7gr",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_825714-MLU72831156837_112023-O.webp",
+                            Description = "Contenido 7gr.",
+                            ImageUrl = "https://farmaciaspatagonicasar.vtexassets.com/arquivos/ids/157030/7798052941978.jpg?v=638017166389700000",
                             Name = "Corrector De Ojereas Artez Westerley Distr. Oficial",
                             Price = 7900m
                         },
                         new
                         {
-                            ProductId = new Guid("d7a8c997-5610-4918-9473-91d05ebf334d"),
+                            ProductId = new Guid("978aa1f9-502a-446f-bb76-52dd2a67ebbe"),
                             Category = 6,
                             Description = "Adidas Argentum 19.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_961577-MLA74277409609_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_716010-MLA73530650055_122023-O.webp",
                             Name = "Pelota adidas Argentum 19 Liga Argentina Balón Oficial",
                             Price = 140000m
                         },
                         new
                         {
-                            ProductId = new Guid("8212164b-785a-4ce5-b065-3b99cbce7d61"),
+                            ProductId = new Guid("a9ddc0a2-d1ba-45e2-8ad6-8be517fa4052"),
                             Category = 6,
                             Description = "GUANTE ATTRAKT SOLID.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_737373-MLA69694206154_052023-O.webp",
@@ -337,159 +337,159 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("71858f56-8f58-4ce7-b8f8-af262de83a86"),
+                            ProductId = new Guid("53a6109a-7d8a-4f3a-b8c2-770c7886cef3"),
                             Category = 6,
                             Description = "Edad recomendada: de 8 años a 120 años.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_655528-MLU74053078727_012024-O.webp",
+                            ImageUrl = "https://tienda.planetadelibros.com.ar/cdn/shop/products/Destroza-este-diario-ahora-a-todo-color_fte.jpg?v=1684348323",
                             Name = "Destroza Este Diario Color - Keri Smith - Libro Del Fondo",
                             Price = 20200m
                         },
                         new
                         {
-                            ProductId = new Guid("749e8da6-ed2b-4da1-a258-a569b8b54b76"),
+                            ProductId = new Guid("3a6c8c8c-f04f-423b-b858-3ec1a49ce10c"),
                             Category = 6,
                             Description = "Soga de saltar de acero Speed Rope.",
                             Discount = 19,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_783722-MLA70257450564_072023-O.webp",
+                            ImageUrl = "https://cbdeportes.com/wp-content/uploads/2019/04/soga.crossfit.aluminio2.jpg",
                             Name = "Soga Para Saltar Aluminio Rulemanes/ Boxeo Fitness Crossfit",
                             Price = 14998m
                         },
                         new
                         {
-                            ProductId = new Guid("1f2aa424-8ce5-48be-9d58-1d441999c02f"),
+                            ProductId = new Guid("9c22d4c8-ab18-4f72-9d6b-2a21a7d82dac"),
                             Category = 7,
                             Description = "Helicóptero Dron Inteligente Sensorial Vuela Sube Y Baja.",
                             Discount = 31,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_716599-MLU73126252000_122023-O.webp",
+                            ImageUrl = "https://modelixracing.com/17560-large_default/cuadricoptero-plegable-24ghz-4ch-con-camara-wifi-hd-f166.jpg",
                             Name = "Helicóptero Dron Inteligente Sensorial Vuela Sube Y Baja Color Negro",
                             Price = 17990m
                         },
                         new
                         {
-                            ProductId = new Guid("02330863-1260-41c0-bf9f-3f1b705132ae"),
+                            ProductId = new Guid("6bac8259-1f45-4be1-98b9-7a730488a119"),
                             Category = 7,
                             Description = "Cocina para nenas nenes chicos infantil madera.",
                             Discount = 5,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_611047-MLU74163663259_012024-O.webp",
-                            Name = "Cocinita De Juguete Cocina Madera Infantil Color Marrón",
+                            ImageUrl = "https://falabella.scene7.com/is/image/FalabellaPE/119952569_1?wid=800&hei=800&qlt=70",
+                            Name = "Cocinita De Juguete Cocina Madera Infantil",
                             Price = 34999m
                         },
                         new
                         {
-                            ProductId = new Guid("ada2b6b2-5314-4260-973f-cf0c257cdf96"),
+                            ProductId = new Guid("7ba4f4da-ab7b-4db2-b52b-d3e2684026fc"),
                             Category = 7,
                             Description = "En sus distintas ediciones, la franquicia de Super Mario ha logrado combinar su estilo con modernos modos de juego que divierten y desafían constantemente a quienes juegan.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_764820-MLU70610438351_072023-O.webp",
+                            ImageUrl = "https://www.radioshackla.com/media/catalog/product/4/6/464310200015-1_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700",
                             Name = "Super Mario Bros Wonder Nintendo Switch",
                             Price = 82999m
                         },
                         new
                         {
-                            ProductId = new Guid("ce9bda4e-a305-49c2-aadc-ccd6fce334a8"),
+                            ProductId = new Guid("f4beb1a8-8a9a-4f5e-9624-c8400c87c7a1"),
                             Category = 7,
                             Description = "Con este juego de Mario vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740157-MLU72836514627_112023-O.webp",
+                            ImageUrl = "https://nextgames.com.ar/img/Public/1040-producto-super-mario-addysey-176.jpg",
                             Name = "Super Mario Odyssey Super Mario Standard Edition Nintendo Switch",
                             Price = 79206m
                         },
                         new
                         {
-                            ProductId = new Guid("5b0f2d89-9198-43c6-8760-fb67d77c9674"),
+                            ProductId = new Guid("08dfb5d6-b386-4108-9e05-f406dd05af01"),
                             Category = 8,
-                            Description = "Tableta Milka Chocolate Biscuit 300 gr",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740928-MLA74220113425_012024-O.webp",
+                            Description = "Tableta Milka Chocolate Biscuit 300 gr.",
+                            ImageUrl = "https://http2.mlstatic.com/D_739884-MLA54985070288_052023-C.jpg",
                             Name = "Tableta Milka Chocolate Biscuit 300 gr - Importado",
                             Price = 9999m
                         },
                         new
                         {
-                            ProductId = new Guid("f7547616-1efd-4153-aa2d-28452d6d42dc"),
+                            ProductId = new Guid("3ca1a2a2-b527-4b0d-80ae-615d6f7b8dd9"),
                             Category = 8,
                             Description = "Pack de 6 latas de 354 mL cada una.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_878966-MLU73885793875_012024-O.webp",
+                            ImageUrl = "https://quirinobebidas.com.ar/wp-content/uploads/2022/10/productos-2022-10-04T114921.209.png",
                             Name = "Lata De Pepsi Cola Gaseosa X 354ml Pack X6 Und",
                             Price = 4381.82m
                         },
                         new
                         {
-                            ProductId = new Guid("56a4d417-0252-4193-8211-37b61f41e793"),
+                            ProductId = new Guid("65c1b39a-75bf-4317-99b1-24e9707f1ce6"),
                             Category = 8,
                             Description = "Coca Cola Lata 354ml Original Gaseosa Pack X6 Latas.",
                             Discount = 5,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_790516-MLU72637348139_112023-O.webp",
+                            ImageUrl = "https://carrefourar.vtexassets.com/arquivos/ids/332158/7790895000232_E02.jpg?v=638211437437130000",
                             Name = "Coca Cola Lata 354ml Original Gaseosa Pack X6 Latas",
                             Price = 9005.29m
                         },
                         new
                         {
-                            ProductId = new Guid("994f7e19-6c8d-4163-a93b-b67c1026fcb1"),
+                            ProductId = new Guid("d7b77133-3ee2-48cb-a006-5fcf3eb9813f"),
                             Category = 8,
                             Description = "Milka Chocolate Oreo Max X 300 Gr.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_816357-MLA74049228146_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_Q_NP_752599-MLU74227122493_012024-O.webp",
                             Name = "Milka Chocolate Oreo Max X 300 Gr - Importado",
                             Price = 9999m
                         },
                         new
                         {
-                            ProductId = new Guid("1373291e-cefb-42dd-9684-32c061c7f3ae"),
+                            ProductId = new Guid("d6fb7f0a-ca5c-472b-a0ee-994192854ebe"),
                             Category = 9,
                             Description = "Libro Hábitos Atómicos - James Clear - Booket.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_673885-MLA54040457764_022023-O.webp",
+                            ImageUrl = "https://tienda.planetadelibros.com.ar/cdn/shop/files/HabitosatomicosTD_Fte.jpg?v=1701373336",
                             Name = "Libro Hábitos Atómicos - James Clear - Booket",
                             Price = 14600m
                         },
                         new
                         {
-                            ProductId = new Guid("a814bd9f-efec-4b08-bb01-8a1cd8eea23b"),
+                            ProductId = new Guid("77782baa-710b-4396-8b50-a4cbdb445493"),
                             Category = 9,
                             Description = "EL DUELO (BOLSILLO) - Gabriel Rolón.",
                             Discount = 10,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_869330-MLU73121803273_112023-O.webp",
+                            ImageUrl = "https://tienda.planetadelibros.com.ar/cdn/shop/products/EldueloBK_drs.jpg?v=1684356447",
                             Name = "Libro El duelo - Gabriel Rolón - Booket Edition",
                             Price = 16000m
                         },
                         new
                         {
-                            ProductId = new Guid("068d39a2-bd0a-42e4-88dd-a0c889983463"),
+                            ProductId = new Guid("298ac52c-151e-4f7f-8ef7-782ed44977f5"),
                             Category = 9,
-                            Description = "Expedicion Matematica 6 - Claudia Broitman.",
+                            Description = "DESAFÍOS - Comunicación 4 Secundaria.",
                             Discount = 5,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_800174-MLU73415445799_122023-O.webp",
-                            Name = "Expedicion Matematica 6 - Claudia Broitman",
+                            ImageUrl = "https://tienda.proyectopilares.com.pe/assets/img/Image-02-01-24-to-6-33-19png",
+                            Name = "Comunicación 4 - Proyecto Educativo Pilares",
                             Price = 16700m
                         },
                         new
                         {
-                            ProductId = new Guid("5cb86389-d807-4a57-af16-1e13dee23273"),
+                            ProductId = new Guid("a542413b-5f19-4be0-aca5-335143299529"),
                             Category = 9,
                             Description = "Como imposible y como quimera, como fin y también como imperativo, la idea de la felicidad nos interpela más que nunca en los tiempos que corren. “¿Cómo ser felices?”.",
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_758457-MLU75135654463_032024-O.webp",
+                            ImageUrl = "https://tienda.planetadelibros.com.ar/cdn/shop/files/Lafelicidad_Fte.jpg?v=1700776214",
                             Name = "Libro La Felicidad - Gabriel Rolón - Planeta",
                             Price = 17990m
                         },
                         new
                         {
-                            ProductId = new Guid("3982093c-e10c-4d24-a487-feec8ec42f15"),
+                            ProductId = new Guid("1adb2309-81dd-4635-ac65-8a1a0eb28c83"),
                             Category = 10,
                             Description = "Sustrato Growmix 80Lts Multipro.",
                             Discount = 5,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_817546-MLU75142995540_032024-O.webp",
+                            ImageUrl = "https://juanijuana.com.ar/wp-content/uploads/2021/10/Growmix-Multripro-Sustrato.png",
                             Name = "GrowMix Profesional Multipro 80 Litros - Importado",
                             Price = 19860m
                         },
                         new
                         {
-                            ProductId = new Guid("6bedbe2b-827e-432e-a1d2-74a2daefccfa"),
+                            ProductId = new Guid("614cb241-6897-4892-bbf8-16e0c76bc072"),
                             Category = 10,
                             Description = "Mantener los espacios verdes de tu hogar ahora es más fácil, olvidate de cortes desprolijos y malezas.",
                             Discount = 36,
-                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_643769-MLU71619277093_092023-O.webp",
+                            ImageUrl = "https://images.fravega.com/f500/10fab03c3a4881539442a1778a2a608f.jpg",
                             Name = "Desmalezadora A Explosión 52cc Potencia 1500w 2 Hp DESMA52CC",
                             Price = 127110m
                         },
                         new
                         {
-                            ProductId = new Guid("3eca1054-db34-4dad-8215-08a7353e4e90"),
+                            ProductId = new Guid("84b2ff92-3b7d-434f-879f-dad9552501b9"),
                             Category = 10,
                             Description = "Potencia: 80 W.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_870740-MLU72833533367_112023-O.webp",
@@ -498,7 +498,7 @@ namespace Infraestructure.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9e1919a9-79b4-4ef8-bdf1-0763e316b757"),
+                            ProductId = new Guid("44e94fe9-38cf-4d5a-8926-023e2895bcf8"),
                             Category = 10,
                             Description = "La cinta doble faz Universal tesa® es una cinta adhesiva de papel muy versátil, ideal para fijar alfombras, o para la decoración en casa y bricolaje.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_860188-MLA47568116839_092021-O.webp",
