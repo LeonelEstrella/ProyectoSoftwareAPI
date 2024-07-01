@@ -1,10 +1,9 @@
-﻿using Application.Interface;
-using Application.Interface.SaleInterface;
-using Application.Interface.SaleMaths;
+﻿using Application.Interface.ProductInterfaces;
+using Application.Interface.SaleInterfaces;
 using Application.Interface.SaleProductInterfaces;
+using Application.Interface.UsefulSalesMethodsInterfaces;
 using Application.Models;
 using Application.Response;
-using Application.UseCase.SaleProducts;
 using Application.Util;
 using System.Globalization;
 
@@ -16,97 +15,41 @@ namespace Application.UseCase.Sale
         private readonly ISaleCommand _command;
         private readonly ISaleQuery _query;
         private readonly IProductService _serviceProduct;
-        private readonly IList<SaleProductResponse> _productList;
         private readonly IList<SingleSaleProduct> _singleSaleProduct;
-        private  Domain.Entities.Sale _sale;
-        private readonly ISaleMathematics _saleMathematics;
         private readonly ISaleProductService _saleProductService;
+        private readonly IUsefulSalesMethods _usefulSalesMethods;
 
-        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<SaleProductResponse> productList, Domain.Entities.Sale sale, ISaleMathematics saleMathematics, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService)
+        public SaleService(ISaleCommand command, ISaleQuery query, IProductService service, IList<SingleSaleProduct> singleSaleProduct, ISaleProductService saleProductService, IUsefulSalesMethods usefulSalesMethods)
         {
             _command = command;
             _query = query;
             _serviceProduct = service;
-            _productList = productList;
-            _sale = sale;
-            _saleMathematics = saleMathematics;
             _singleSaleProduct = singleSaleProduct;
             _saleProductService = saleProductService;
+            _usefulSalesMethods = usefulSalesMethods;
         }
 
         public async Task<SingleSaleResponse> CreateSale(CreateSaleRequest request)
         {
 
-            var totalProductsBougth = 0;
+            var allProductInformationList = await _usefulSalesMethods.CreateAllProductInformationList(request);
 
-            ProductGetResponse product;
+            var sale = _usefulSalesMethods.CreateSaleEntity(allProductInformationList, request);
 
-            foreach (var item in request.products) 
-            {
-                totalProductsBougth += item.quantity;
+            var saleId = await _command.RegisterSale(sale);
 
-                if (item.quantity <= 0)
-                {
-                    throw new BadRequestException("La cantidad del producto debe ser mayor que 0.");
-                }
-
-                try 
-                {
-                    product = await _serviceProduct.GetProductById(item.productId);
-                }
-
-                catch (Exception ex) 
-                {
-                    throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
-                }
-                             
-
-                _productList.Add(new SaleProductResponse
-                {
-                    id = product.id,
-                    name = product.name,
-                    description = product.description,
-                    price = product.price,
-                    discount = product.discount,
-                    imageUrl = product.imageUrl,
-                    quantity = item.quantity,
-                    category = new ProductCategoryResponse
-                    {
-                        id = product.category.id,
-                        name = product.category.name
-                    }
-                });
-
-                _singleSaleProduct.Add(new SingleSaleProduct
-                {
-                    productId = product.id,
-                    quantity = item.quantity,
-                    price = Convert.ToDouble(product.price),
-                    discount = product.discount
-                });
-            }
-
-            _sale = _saleMathematics.CalculateSale(_productList, _sale);
-
-            decimal roundedSale = Math.Round(_sale.TotalPay, 2);
-
-            if (Convert.ToDouble(request.totalPayed) != Convert.ToDouble(roundedSale))
-            {
-                throw new BadRequestException("No se pudo crear la venta. Por favor, revise los datos proporcionados.");
-            }
-
-            var saleId = await _command.RegisterSale(_productList, _sale);
+            var mappedProducts = _usefulSalesMethods.GetMappedProducts(saleId);
 
             return await Task.FromResult(new SingleSaleResponse
             {
                 id = saleId,
-                totalPay = _sale.TotalPay,
-                totalQuantity = totalProductsBougth,
-                subtotal = _sale.Subtotal,
-                totalDiscount = _sale.TotalDiscount,
+                totalPay = sale.TotalPay,
+                totalQuantity = allProductInformationList.Sum(p => p.quantity),
+                subtotal = sale.Subtotal,
+                totalDiscount = sale.TotalDiscount,
                 taxes = TAXES,
-                date = DateTime.Now,
-                products = _singleSaleProduct.ToList()
+                date = sale.Date,
+                products = mappedProducts
             });
         }
 
@@ -132,7 +75,7 @@ namespace Application.UseCase.Sale
                     id = item.ShoppingCartId,
                     productId = product.id,
                     quantity = item.Quantity,
-                    price = Convert.ToDouble(product.price),
+                    price = product.price,
                     discount = product.discount
                 });
             }

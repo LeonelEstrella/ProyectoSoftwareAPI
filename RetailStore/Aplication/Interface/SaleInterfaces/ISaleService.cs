@@ -1,7 +1,7 @@
 ﻿using Application.Models;
 using Application.Response;
 
-namespace Application.Interface.SaleInterface
+namespace Application.Interface.SaleInterfaces
 {
     public interface ISaleService
     {

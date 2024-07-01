@@ -1,4 +1,4 @@
-﻿using Application.Interface.SaleInterface;
+﻿using Application.Interface.SaleInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +25,12 @@ namespace Infraestructure.Queries
 
             if (fromDate.HasValue)
             {
-                query = query.Where(s => s.Date >= fromDate);
+                query = query.Where(s => s.Date > fromDate);
             }
 
             if (toDate.HasValue)
             {
-                query = query.Where(s => s.Date <= toDate);
+                query = query.Where(s => s.Date < toDate);
             }
             
             return query.ToList();

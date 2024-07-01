@@ -1,4 +1,4 @@
-﻿using Application.Interface.Categories;
+﻿using Application.Interface.CategoryInterfaces;
 using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,5 @@
-﻿using Application.Interface;
-using Application.Interface.Categories;
+﻿using Application.Interface.CategoryInterfaces;
+using Application.Interface.ProductInterfaces;
 using Application.Interface.SaleProductInterfaces;
 using Application.Models;
 using Application.Response;

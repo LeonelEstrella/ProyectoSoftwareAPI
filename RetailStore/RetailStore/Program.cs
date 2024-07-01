@@ -1,8 +1,9 @@
-using Application.Interface;
-using Application.Interface.Categories;
-using Application.Interface.SaleInterface;
-using Application.Interface.SaleMaths;
+using Application.Interface.CategoryInterfaces;
+using Application.Interface.ProductInterfaces;
+using Application.Interface.SaleInterfaces;
+using Application.Interface.SaleMathsInterfaces;
 using Application.Interface.SaleProductInterfaces;
+using Application.Interface.UsefulSalesMethodsInterfaces;
 using Application.Response;
 using Application.UseCase.Categories;
 using Application.UseCase.Products;
@@ -41,6 +42,8 @@ builder.Services.AddScoped<ISaleCommand, SaleCommand>();
 
 builder.Services.AddScoped<ISaleProductService, SaleProductService>();
 builder.Services.AddScoped<ISaleProductQuery, SaleProductQuery>();
+
+builder.Services.AddScoped<IUsefulSalesMethods, UsefulSalesMethods>();
 
 builder.Services.AddScoped<IList<ProductGetResponse>, List<ProductGetResponse>>();
 builder.Services.AddScoped<IList<SaleProductResponse>, List<SaleProductResponse>>();
